@@ -3,6 +3,7 @@
 namespace common\models;
 
 use Yii;
+use yii\behaviors\SluggableBehavior;
 use yii\behaviors\TimestampBehavior;
 
 /**
@@ -43,7 +44,14 @@ class Place extends \yii\db\ActiveRecord
 	public function behaviors()
 	{
 		return [
-			TimestampBehavior::className()
+			TimestampBehavior::className(),
+			//TODO а надо ли? может на лету генерить в поле проще?
+			[
+				'class' => SluggableBehavior::className(),
+				'attribute' => 'name',
+				'slugAttribute' => 'alias',
+				'ensureUnique' => true,
+			],
 		];
 	}
 
@@ -53,11 +61,11 @@ class Place extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'alias', 'user_id', 'city_id', 'coordinates', 'address'], 'required'],
+            [['name', 'user_id', 'city_id', 'coordinates', 'address'], 'required'],
             [['user_id', 'city_id', 'total_views', 'total_likes', 'status'], 'integer'],
             [['introtext', 'description'], 'string'],
             [['rating'], 'number'],
-            [['name', 'alias', 'coordinates', 'address', 'phone', 'website'], 'string', 'max' => 255],
+            [['name', 'coordinates', 'address', 'phone', 'website'], 'string', 'max' => 255],
         ];
     }
 

@@ -7,6 +7,7 @@ use kartik\file\FileInput;
 use himiklab\thumbnail\EasyThumbnailImage;
 use kartik\select2\Select2;
 use dosamigos\ckeditor\CKEditor;
+use common\models\User;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\Place */
@@ -17,7 +18,14 @@ use dosamigos\ckeditor\CKEditor;
     <?php $form = ActiveForm::begin(); ?>
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
     <?= $form->field($model, 'alias')->textInput(['maxlength' => true]) ?>
-    <?= $form->field($model, 'user_id')->textInput() ?>
+	<?= $form->field($model, 'user_id')->widget(Select2::classname(), [
+		'data' => ArrayHelper::map(User::find()->where(['role' => User::ROLE_OWNER])->all(), 'id', 'email'),
+		'language' => 'ru',
+		'options' => ['placeholder' => 'Выберите владельца'],
+		'pluginOptions' => [
+			'allowClear' => true
+		],
+	]); ?>
     <?= $form->field($model, 'city_id')->textInput() ?>
     <?= $form->field($model, 'coordinates')->textInput(['maxlength' => true]) ?>
     <?= $form->field($model, 'address')->textInput(['maxlength' => true]) ?>
