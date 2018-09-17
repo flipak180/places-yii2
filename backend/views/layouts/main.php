@@ -40,6 +40,7 @@ AppAsset::register($this);
         } else {
             $menuItems = [
                 ['label' => 'Пользователи', 'url' => ['/users/index']],
+                ['label' => 'Заведения', 'url' => ['/places/index']],
                 //['label' => '<span class="glyphicon glyphicon-cog"></span>', 'url' => ['/']],
                 ['label' => '<span class="glyphicon glyphicon-log-out"></span>', 'url' => ['/site/logout']],
             ];
