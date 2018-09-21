@@ -118,3 +118,115 @@ a.desc:after {
 .nav > li > form > button.logout:focus {
     outline: none;
 }
+
+div.required label.control-label:after {
+    content: " *";
+    color: red;
+}
+.image-preview img{
+    margin-bottom: 10px;
+}
+
+.images{
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+.images .image{
+    float: left;
+    text-align: center;
+    margin-right: 20px;
+}
+.images .image img{
+    display: block;
+    border: 1px solid #ccc;
+}
+.images .image a{
+    display: inline-block;
+    margin-top: 10px;
+}
+.agent-group .list-group{
+    margin-bottom: 0;
+}
+
+
+.sortable {
+    -moz-user-select: none;
+    padding: 0;
+    margin: 0;
+}
+.sortable li {
+    list-style: none outside none;
+    cursor: normal;
+}
+.cursor-move li{
+    cursor: move;
+}
+.sortable .handle {
+    cursor: move;
+}
+.sortable li.disabled {
+    cursor: not-allowed;
+}
+.sortable li:focus, .sortable li:hover {
+    background-color: #eee;
+}
+.sortable.grid {
+    overflow: hidden;
+}
+.sortable.grid li {
+    float: left;
+    min-width: 80px;
+    min-height: 80px;
+    text-align: center;
+}
+.sortable .handle {
+    cursor: move;
+}
+.sortable.connected {
+    min-height: 100px;
+    min-width: 200px;
+}
+.sortable li.sortable-placeholder {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border: 1px dashed #CCCCCC;
+    padding: 16px;
+}
+.sortable li.sortable-dragging {
+}
+
+.agency-view .status_0{
+    color: #d9534f;
+}
+.field-object-total_bathrooms{
+    display: none;
+}
+
+.photo-list{
+    overflow: hidden;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 20px;
+}
+.photo-list li{
+    float: left;
+    margin-right: 20px;
+    text-align: center;
+    cursor: move;
+}
+.photo-list li img{
+    display: block;
+    border: 1px solid #ccc;
+}
+.photo-list li a{
+    display: inline-block;
+    margin-top: 10px;
+}
+
+#place-comforts_field label{
+    margin-right: 15px;
+}
+
+.nav-tabs{
+    margin-bottom: 30px;
+}

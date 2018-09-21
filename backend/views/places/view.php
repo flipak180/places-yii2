@@ -2,6 +2,11 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use yii\helpers\ArrayHelper;
+use himiklab\thumbnail\EasyThumbnailImage;
+use yii\grid\GridView;
+use yii\data\ArrayDataProvider;
+use common\models\User;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\Place */
@@ -9,6 +14,8 @@ use yii\widgets\DetailView;
 $this->title = $model->name;
 $this->params['breadcrumbs'][] = ['label' => 'Заведения', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
+
+$model->comforts_field = ArrayHelper::getColumn($model->getComforts()->all(), 'name');
 ?>
 
 <div class="place-view">
@@ -23,20 +30,43 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
         ]) ?>
     </p>
+    <?= $this->render('_tabs', ['model' => $model]) ?>
+    <div class="images">
+        <?php if (count($model->images)): ?>
+            <?php foreach ($model->images as $image): ?>
+                <div class="image">
+                    <?= EasyThumbnailImage::thumbnailImg(Yii::getAlias('@frontend_web').$image->path, 160, 160, EasyThumbnailImage::THUMBNAIL_OUTBOUND) ?>
+                </div>
+            <?php endforeach ?>
+        <?php endif ?>
+    </div>
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
             'id',
             'name',
             'alias',
-            'user_id',
-            'city_id',
+            [
+                'attribute' => 'user_id',
+                'format' => 'raw',
+                'value' => $model->user ? Html::a($model->user->name, ['users/view', 'id' => $model->user_id]) : '-',
+            ],
+            [
+                'attribute' => 'city_id',
+                'format' => 'raw',
+                'value' => $model->city ? Html::a($model->city->name, ['cities/view', 'id' => $model->city_id]) : '-',
+            ],
             'coordinates',
             'address',
             'phone',
             'website',
             'introtext:ntext',
             'description:ntext',
+            [
+                'attribute' => 'comforts_field',
+                'format' => 'raw',
+                'value' => implode('<br>', $model->comforts_field),
+            ],
             'rating',
             'total_views',
             'total_likes',

@@ -2,6 +2,9 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use yii\helpers\ArrayHelper;
+use common\models\City;
+use common\models\User;
 
 /* @var $this yii\web\View */
 /* @var $searchModel backend\models\PlacesSearch */
@@ -23,9 +26,23 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             'id',
             'name',
-            'alias',
-            'user_id',
-            'city_id',
+            //'alias',
+            [
+                'attribute' => 'user_id',
+                'format' => 'raw',
+                'value' => function($data) {
+                    return $data->user ? Html::a($data->user->name, ['users/view', 'id' => $data->user_id]) : '-';
+                },
+                'filter' => Html::activeDropDownList($searchModel, 'user_id', ArrayHelper::map(User::find()->orderBy('name ASC')->all(), 'id', 'name'), ['class' => 'form-control', 'prompt' => '']),
+            ],
+            [
+                'attribute' => 'city_id',
+                'format' => 'raw',
+                'value' => function($data) {
+                    return $data->city ? Html::a($data->city->name, ['cities/view', 'id' => $data->city_id]) : '-';
+                },
+                'filter' => Html::activeDropDownList($searchModel, 'city_id', ArrayHelper::map(City::find()->orderBy('name ASC')->all(), 'id', 'name'), ['class' => 'form-control', 'prompt' => '']),
+            ],
             //'coordinates',
             //'address',
             //'phone',

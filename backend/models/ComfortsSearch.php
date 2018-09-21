@@ -5,12 +5,12 @@ namespace backend\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use common\models\Place;
+use common\models\Comfort;
 
 /**
- * PlacesSearch represents the model behind the search form of `common\models\Place`.
+ * ComfortsSearch represents the model behind the search form of `common\models\Comfort`.
  */
-class PlacesSearch extends Place
+class ComfortsSearch extends Comfort
 {
     /**
      * {@inheritdoc}
@@ -18,9 +18,8 @@ class PlacesSearch extends Place
     public function rules()
     {
         return [
-            [['id', 'user_id', 'city_id', 'network_id', 'total_views', 'total_likes', 'status', 'created_at', 'updated_at'], 'integer'],
-            [['name', 'alias', 'coordinates', 'address', 'phone', 'website', 'introtext', 'description'], 'safe'],
-            [['rating'], 'number'],
+            [['id', 'created_at', 'updated_at'], 'integer'],
+            [['name', 'description'], 'safe'],
         ];
     }
 
@@ -42,7 +41,7 @@ class PlacesSearch extends Place
      */
     public function search($params)
     {
-        $query = Place::find();
+        $query = Comfort::find();
 
         // add conditions that should always apply here
 
@@ -61,24 +60,11 @@ class PlacesSearch extends Place
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'user_id' => $this->user_id,
-            'city_id' => $this->city_id,
-            'network_id' => $this->network_id,
-            'rating' => $this->rating,
-            'total_views' => $this->total_views,
-            'total_likes' => $this->total_likes,
-            'status' => $this->status,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name])
-            ->andFilterWhere(['like', 'alias', $this->alias])
-            ->andFilterWhere(['like', 'coordinates', $this->coordinates])
-            ->andFilterWhere(['like', 'address', $this->address])
-            ->andFilterWhere(['like', 'phone', $this->phone])
-            ->andFilterWhere(['like', 'website', $this->website])
-            ->andFilterWhere(['like', 'introtext', $this->introtext])
             ->andFilterWhere(['like', 'description', $this->description]);
 
         return $dataProvider;

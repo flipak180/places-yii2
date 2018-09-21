@@ -21,6 +21,7 @@ class m180917_202943_places extends Migration
 			'alias'             => Schema::TYPE_STRING . ' NOT NULL',
 			'user_id'       	=> Schema::TYPE_INTEGER . ' NOT NULL',
 			'city_id'       	=> Schema::TYPE_INTEGER . ' NOT NULL',
+			'network_id'       	=> Schema::TYPE_INTEGER,
 			'coordinates'       => Schema::TYPE_STRING . ' NOT NULL',
 			'address'       	=> Schema::TYPE_STRING . ' NOT NULL',
 			'phone'       		=> Schema::TYPE_STRING,

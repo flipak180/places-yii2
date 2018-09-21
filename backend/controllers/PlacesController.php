@@ -4,10 +4,16 @@ namespace backend\controllers;
 
 use Yii;
 use common\models\Place;
+use common\models\PlaceImage;
 use backend\models\PlacesSearch;
+use backend\models\ReviewsSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\AccessControl;
+use yii\web\UploadedFile;
+use yii\imagine\Image;
+use himiklab\thumbnail\EasyThumbnailImage;
+use yii\helpers\ArrayHelper;
 
 /**
  * PlacesController implements the CRUD actions for Place model.
@@ -60,6 +66,19 @@ class PlacesController extends Controller
         ]);
     }
 
+    public function actionViewReviews($id)
+    {
+        $model = $this->findModel($id);
+        $searchModel = new ReviewsSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        return $this->render('view-reviews', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+            'model' => $model,
+        ]);
+    }
+
     /**
      * Creates a new Place model.
      * If creation is successful, the browser will be redirected to the 'view' page.
@@ -70,6 +89,8 @@ class PlacesController extends Controller
         $model = new Place();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            $model->uploadImages();
+            $model->saveComforts();
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
@@ -88,14 +109,52 @@ class PlacesController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $model->comforts_field = ArrayHelper::getColumn($model->getPlaceComforts()->all(), 'comfort_id');
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            $model->uploadImages();
+            $model->saveComforts();
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('update', [
             'model' => $model,
         ]);
+    }
+
+    /**
+     * Deletes an image of Product model.
+     * If deletion is successful, the browser will be redirected to the 'index' page.
+     * @param integer $image_id
+     * @return mixed
+     */
+    public function actionDeleteImage($id)
+    {
+        if ($image = PlaceImage::findOne(['id' => $id]) and file_exists(Yii::getAlias('@frontend_web').$image->path)) {
+            unlink(Yii::getAlias('@frontend_web').$image->path);
+            return $image->delete();
+        }
+        return;
+    }
+
+    public function actionSortImages($order)
+    {
+        foreach (explode(';', $order) as $key => $image_id) {
+            $image = PlaceImage::findOne(['id' => $image_id]);
+            $image->position = $key;
+            $image->save();
+        }
+        return true;
+    }
+
+    public function actionRotateImage($id, $angle = 0)
+    {
+        if ($image_obj = PlaceImage::findOne($id)) {
+            $image = Image::getImagine()->open(Yii::getAlias('@frontend_web').$image_obj->path);
+            $image->rotate($angle)->save(Yii::getAlias('@frontend_web').$image_obj->path);
+            return EasyThumbnailImage::thumbnailFileUrl(Yii::getAlias('@frontend_web').$image_obj->path, 160, 160, EasyThumbnailImage::THUMBNAIL_OUTBOUND);
+        }
+        return;
     }
 
     /**

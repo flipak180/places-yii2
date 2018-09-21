@@ -41,6 +41,11 @@ AppAsset::register($this);
             $menuItems = [
                 ['label' => 'Пользователи', 'url' => ['/users/index']],
                 ['label' => 'Заведения', 'url' => ['/places/index']],
+                ['label' => 'Отзывы', 'url' => ['/reviews/index']],
+                ['label' => 'Справочники', 'items' => [
+                    ['label' => 'Города', 'url' => ['/cities/index']],
+                    ['label' => 'Удобства', 'url' => ['/comforts/index']],
+                ]],
                 //['label' => '<span class="glyphicon glyphicon-cog"></span>', 'url' => ['/']],
                 ['label' => '<span class="glyphicon glyphicon-log-out"></span>', 'url' => ['/site/logout']],
             ];
