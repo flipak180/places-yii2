@@ -1,5 +1,7 @@
 $(function() {
 
+    var base_href = '/admin';
+
     // Общее
     $('input.phone').mask("+7 (999) 999-99-99", {autoclear: false});
 
@@ -71,6 +73,35 @@ $(function() {
         $('#range-nav').on('click', '[data-tab]', function() {
             controller.getView().getCalendarView().tab($(this).data('tab'));
             return false;
+        });
+    }
+
+    // Связь города и районов
+    var city_select = $('.city-select');
+    if (city_select.length) {
+        var district_select = $('.district-select'),
+            station_select = $('#place-station_id');
+
+        //Смена города
+        city_select.change(function() {
+            $.get(base_href + '/districts/find-by-city/?city_id=' + $(this).val(), function(data) {
+                var districts = '<option value="">Выберите район</option>';
+                for (var i = 0; i < data.length; i++) {
+                    districts += '<option value="' + data[i]["id"] + '">' + data[i]["name"] + '</option>';
+                }
+                district_select.html(districts).prop('disabled', districts ? false : true);
+            });
+        });
+
+        //Смена района
+        district_select.change(function() {
+            $.get(base_href + '/stations/find-by-district/?district_id=' + $(this).val(), function(data) {
+                var stations = '';
+                for (var i = 0; i < data.length; i++) {
+                    stations += '<option value="' + data[i]["id"] + '">' + data[i]["name"] + '</option>';
+                }
+                station_select.html(stations).prop('disabled', stations ? false : true);
+            });
         });
     }
 	

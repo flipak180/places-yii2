@@ -8,6 +8,7 @@ use backend\models\DistrictsSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\AccessControl;
+use yii\web\Response;
 
 /**
  * DistrictsController implements the CRUD actions for District model.
@@ -58,6 +59,12 @@ class DistrictsController extends Controller
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
+    }
+
+    public function actionFindByCity($city_id)
+    {
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        return District::find()->where(['city_id' => $city_id])->orderBy('name ASC')->all();
     }
 
     /**

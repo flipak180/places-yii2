@@ -19,7 +19,7 @@ class m180923_102155_metro_stations extends Migration
             'id'            => Schema::TYPE_PK,
             'name'          => Schema::TYPE_STRING . ' NOT NULL',
             'city_id'       => Schema::TYPE_INTEGER . ' NOT NULL',
-            'district_id'   => Schema::TYPE_INTEGER . ' NOT NULL',
+            'district_id'   => Schema::TYPE_INTEGER,
             'longitude'     => Schema::TYPE_DECIMAL . '(11, 8)',
             'latitude'      => Schema::TYPE_DECIMAL . '(11, 8)',
             'created_at'    => Schema::TYPE_INTEGER . ' NOT NULL',

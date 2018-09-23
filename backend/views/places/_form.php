@@ -39,13 +39,14 @@ use common\models\PlaceNetwork;
 			'allowClear' => true
 		],
 	]); ?>
-    <?= $form->field($model, 'district_id')->widget(Select2::classname(), [
-        'data' => ArrayHelper::map(District::find()->orderBy('name ASC')->all(), 'id', 'name'),
-        'options' => ['placeholder' => 'Выберите район'],
-        'pluginOptions' => [
-            'allowClear' => true
-        ],
-    ]); ?>
+    <?php if ($model->city_id): ?>
+        <?= $form->field($model, 'district_id')->dropDownList(
+            ArrayHelper::map(District::find()->where(['city_id' => $model->city_id])->orderBy('name ASC')->all(), 'id', 'name'),
+            ['prompt' => 'Выберите район', 'class' => 'form-control district-select']
+        ) ?>
+    <?php else: ?>
+        <?= $form->field($model, 'district_id')->dropDownList([], ['prompt' => 'Сперва выберите город', 'disabled' => true, 'class' => 'form-control district-select']) ?>
+    <?php endif ?>
     <?= $form->field($model, 'longitude')->textInput(['maxlength' => true]) ?>
     <?= $form->field($model, 'latitude')->textInput(['maxlength' => true]) ?>
     <?= $form->field($model, 'address')->textInput(['maxlength' => true]) ?>

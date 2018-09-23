@@ -40,7 +40,7 @@ class MetroStation extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'city_id', 'district_id'], 'required'],
+            [['name', 'city_id'], 'required'],
             [['city_id', 'district_id'], 'integer'],
             [['longitude', 'latitude'], 'number'],
             [['name'], 'string', 'max' => 255],
