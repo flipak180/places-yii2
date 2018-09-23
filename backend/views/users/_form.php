@@ -34,7 +34,6 @@ use dosamigos\ckeditor\CKEditor;
             <p><?= Html::a('Удалить', ['delete-image', 'id' => $model->id], ['class' => 'btn btn-xs btn-danger']) ?></p>
         </div>
     <?php endif ?>
-    <?= $form->field($model, 'place_id')->textInput() ?>
     <?= $form->field($model, 'description')->widget(CKEditor::classname(), [
         'options' => ['rows' => 6],
         'preset' => 'full',

@@ -7,10 +7,14 @@ use yii\helpers\ArrayHelper;
 use kartik\file\FileInput;
 use himiklab\thumbnail\EasyThumbnailImage;
 use kartik\select2\Select2;
+use kartik\rating\StarRating;
 use dosamigos\ckeditor\CKEditor;
 use common\models\User;
 use common\models\City;
+use common\models\District;
+use common\models\Place;
 use common\models\Comfort;
+use common\models\PlaceNetwork;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\Place */
@@ -35,7 +39,15 @@ use common\models\Comfort;
 			'allowClear' => true
 		],
 	]); ?>
-    <?= $form->field($model, 'coordinates')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'district_id')->widget(Select2::classname(), [
+        'data' => ArrayHelper::map(District::find()->orderBy('name ASC')->all(), 'id', 'name'),
+        'options' => ['placeholder' => 'Выберите район'],
+        'pluginOptions' => [
+            'allowClear' => true
+        ],
+    ]); ?>
+    <?= $form->field($model, 'longitude')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'latitude')->textInput(['maxlength' => true]) ?>
     <?= $form->field($model, 'address')->textInput(['maxlength' => true]) ?>
     <?= $form->field($model, 'phone')->textInput(['maxlength' => true]) ?>
     <?= $form->field($model, 'website')->textInput(['maxlength' => true]) ?>
@@ -47,7 +59,9 @@ use common\models\Comfort;
 		'options' => ['rows' => 6],
 		'preset' => 'full',
 	]) ?>
-    <?= $form->field($model, 'rating')->input('number') ?>
+    <?= $form->field($model, 'rating')->widget(StarRating::classname(), [
+        'pluginOptions' => ['step' => 1, 'showClear' => false, 'displayOnly' => true]
+    ]) ?>
     <?= $form->field($model, 'images_field[]')->widget(FileInput::classname(), [
         'options' => [
             'multiple' => true,
@@ -72,6 +86,20 @@ use common\models\Comfort;
         </ul>
     <?php endif ?>
     <?= $form->field($model, 'comforts_field')->checkboxList(ArrayHelper::map(Comfort::find()->all(), 'id', 'name')) ?>
+    <?= $form->field($model, 'similar_field')->widget(Select2::classname(), [
+        'data' => ArrayHelper::map(Place::find()->orderBy('name ASC')->all(), 'id', 'name'),
+        'options' => ['placeholder' => 'Выберите заведения', 'multiple' => true],
+        'pluginOptions' => [
+            'allowClear' => true
+        ],
+    ]); ?>
+    <?= $form->field($model, 'network_id')->widget(Select2::classname(), [
+        'data' => ArrayHelper::map(PlaceNetwork::find()->orderBy('name ASC')->all(), 'id', 'name'),
+        'options' => ['placeholder' => 'Выберите сеть'],
+        'pluginOptions' => [
+            'allowClear' => true
+        ],
+    ]) ?>
     <?= $form->field($model, 'total_views')->input('number') ?>
     <?= $form->field($model, 'total_likes')->input('number') ?>
     <?= $form->field($model, 'status')->dropDownList($model->statusArr) ?>

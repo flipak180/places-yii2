@@ -54,6 +54,11 @@ class PlaceNetwork extends \yii\db\ActiveRecord
         return $this->hasOne(User::className(), ['id' => 'user_id']);
     }
 
+    public function getPlaces()
+    {
+        return $this->hasMany(Place::className(), ['network_id' => 'id']);
+    }
+
     /**
      * {@inheritdoc}
      */

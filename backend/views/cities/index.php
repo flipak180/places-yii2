@@ -24,6 +24,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'name',
             'alias',
+            'padezh_rodit',
+            'padezh_predl',
             'time_shift',
             //'seo_text:ntext',
             'created_at:datetime',

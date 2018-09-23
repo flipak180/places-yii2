@@ -40,6 +40,9 @@ $model->comforts_field = ArrayHelper::getColumn($model->getComforts()->all(), 'n
             <?php endforeach ?>
         <?php endif ?>
     </div>
+    <pre>
+        <?= $model->description ?>
+    </pre>
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
@@ -56,12 +59,22 @@ $model->comforts_field = ArrayHelper::getColumn($model->getComforts()->all(), 'n
                 'format' => 'raw',
                 'value' => $model->city ? Html::a($model->city->name, ['cities/view', 'id' => $model->city_id]) : '-',
             ],
-            'coordinates',
+            [
+                'attribute' => 'district_id',
+                'format' => 'raw',
+                'value' => $model->district ? Html::a($model->district->name, ['districts/view', 'id' => $model->district_id]) : '-',
+            ],
+            [
+                'attribute' => 'network_id',
+                'format' => 'raw',
+                'value' => $model->network ? Html::a($model->network->name, ['place-networks/view', 'id' => $model->network_id]) : '-',
+            ],
+            'longitude',
+            'latitude',
             'address',
             'phone',
             'website',
             'introtext:ntext',
-            'description:ntext',
             [
                 'attribute' => 'comforts_field',
                 'format' => 'raw',

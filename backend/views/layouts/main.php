@@ -44,7 +44,10 @@ AppAsset::register($this);
                 ['label' => 'Отзывы', 'url' => ['/reviews/index']],
                 ['label' => 'Справочники', 'items' => [
                     ['label' => 'Города', 'url' => ['/cities/index']],
+                    ['label' => 'Районы', 'url' => ['/districts/index']],
+                    ['label' => 'Станции метро', 'url' => ['/metro-stations/index']],
                     ['label' => 'Удобства', 'url' => ['/comforts/index']],
+                    ['label' => 'Сети заведений', 'url' => ['/place-networks/index']],
                 ]],
                 //['label' => '<span class="glyphicon glyphicon-cog"></span>', 'url' => ['/']],
                 ['label' => '<span class="glyphicon glyphicon-log-out"></span>', 'url' => ['/site/logout']],

@@ -57,5 +57,21 @@ $(function() {
         var rating = (total / features_score.length).toFixed(2);
         placereview_rating.rating('update', rating);
     });
+
+    // Часы работы
+    if ($('#calendar').length) {
+        var controller = new MainController();
+        controller.init();
+
+        $('[data-date-range-view]').click(function() {
+            controller.getView().getDateRangeView().tab($(this).data('date-range-view'));
+            return false;
+        });
+
+        $('#range-nav').on('click', '[data-tab]', function() {
+            controller.getView().getCalendarView().tab($(this).data('tab'));
+            return false;
+        });
+    }
 	
 });

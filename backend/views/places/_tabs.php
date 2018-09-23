@@ -14,4 +14,7 @@ use yii\helpers\Url;
     <li <?= Yii::$app->controller->action->id == 'view-reviews' ? 'class="active"' : '' ?> >
     	<a href="<?= Url::to(['places/view-reviews', 'id' => $model->id]) ?>">Отзывы (<?= count($model->reviews) ?>)</a>
     </li>
+    <li <?= Yii::$app->controller->action->id == 'opening-hours' ? 'class="active"' : '' ?> >
+    	<a href="<?= Url::to(['places/opening-hours', 'id' => $model->id]) ?>">Часы работы</a>
+    </li>
 </ul>

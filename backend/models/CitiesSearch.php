@@ -19,7 +19,7 @@ class CitiesSearch extends City
     {
         return [
             [['id', 'time_shift', 'created_at', 'updated_at'], 'integer'],
-            [['name', 'alias', 'seo_text'], 'safe'],
+            [['name', 'alias', 'seo_text', 'padezh_rodit', 'padezh_predl'], 'safe'],
         ];
     }
 
@@ -67,6 +67,8 @@ class CitiesSearch extends City
 
         $query->andFilterWhere(['like', 'name', $this->name])
             ->andFilterWhere(['like', 'alias', $this->alias])
+            ->andFilterWhere(['like', 'padezh_rodit', $this->padezh_rodit])
+            ->andFilterWhere(['like', 'padezh_predl', $this->padezh_predl])
             ->andFilterWhere(['like', 'seo_text', $this->seo_text]);
 
         return $dataProvider;

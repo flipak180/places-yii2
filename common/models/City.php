@@ -11,6 +11,8 @@ use yii\behaviors\TimestampBehavior;
  * @property int $id
  * @property string $name
  * @property string $alias
+ * @property string $padezh_rodit
+ * @property string $padezh_predl
  * @property int $time_shift
  * @property string $seo_text
  * @property int $created_at
@@ -42,7 +44,7 @@ class City extends \yii\db\ActiveRecord
             [['name', 'alias'], 'required'],
             [['time_shift'], 'integer'],
             [['seo_text'], 'string'],
-            [['name', 'alias'], 'string', 'max' => 255],
+            [['name', 'alias', 'padezh_rodit', 'padezh_predl'], 'string', 'max' => 255],
         ];
     }
 
@@ -55,6 +57,8 @@ class City extends \yii\db\ActiveRecord
             'id' => 'ID',
             'name' => 'Название',
             'alias' => 'Алиас',
+            'padezh_rodit' => 'Чего?',
+            'padezh_predl' => 'О чем?',
             'time_shift' => 'Разница во времени',
             'seo_text' => 'SEO-текст',
             'created_at' => 'Дата добавления',

@@ -35,7 +35,6 @@ $this->params['breadcrumbs'][] = $this->title;
             'email:email',
             'name',
             'balance',
-            'place_id',
             'description:ntext',
             [
                 'attribute' => 'role',

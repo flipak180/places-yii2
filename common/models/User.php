@@ -16,7 +16,6 @@ use yii\behaviors\TimestampBehavior;
  * @property string $name
  * @property string $balance
  * @property string $avatar
- * @property int $place_id
  * @property string $description
  * @property string $auth_key
  * @property string $password_hash
@@ -66,7 +65,7 @@ class User extends ActiveRecord implements IdentityInterface
             [['email', 'name', 'auth_key', 'password_hash', 'role'], 'required'],
             [['password_field'], 'required', 'on' => 'create'],
             [['balance'], 'number'],
-            [['place_id', 'status'], 'integer'],
+            [['status'], 'integer'],
             [['description'], 'string'],
             [['email', 'name', 'avatar', 'password_hash', 'password_reset_token', 'email_confirm_token', 'role', 'password_field', 'avatar_field'], 'string', 'max' => 255],
             [['auth_key'], 'string', 'max' => 32],

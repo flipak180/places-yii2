@@ -23,14 +23,18 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
         ]) ?>
     </p>
+    <pre>
+        <?= $model->seo_text ?>
+    </pre>
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
             'id',
             'name',
             'alias',
+            'padezh_rodit',
+            'padezh_predl',
             'time_shift:datetime',
-            'seo_text:ntext',
             'created_at:datetime',
             'updated_at:datetime',
         ],

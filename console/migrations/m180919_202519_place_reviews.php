@@ -22,7 +22,7 @@ class m180919_202519_place_reviews extends Migration
             'name'              => Schema::TYPE_STRING . ' NOT NULL',
             'text'              => Schema::TYPE_TEXT,
             'rating'            => Schema::TYPE_DECIMAL . '(3,2) DEFAULT 0',
-            'status'            => Schema::TYPE_SMALLINT . ' NOT NULL DEFAULT 10',
+            'status'            => Schema::TYPE_TINYINT . ' NOT NULL DEFAULT 10',
             'created_at'        => Schema::TYPE_INTEGER . ' NOT NULL',
             'updated_at'        => Schema::TYPE_INTEGER . ' NOT NULL',
         ], $tableOptions);

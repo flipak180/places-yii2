@@ -79,6 +79,19 @@ class PlacesController extends Controller
         ]);
     }
 
+    public function actionOpeningHours($id)
+    {
+        $model = $this->findModel($id);
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(Yii::$app->request->referrer);
+        }
+
+        return $this->render('opening-hours', [
+            'model' => $model,
+        ]);
+    }
+
     /**
      * Creates a new Place model.
      * If creation is successful, the browser will be redirected to the 'view' page.
@@ -91,6 +104,7 @@ class PlacesController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             $model->uploadImages();
             $model->saveComforts();
+            $model->saveSimilar();
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
@@ -110,10 +124,12 @@ class PlacesController extends Controller
     {
         $model = $this->findModel($id);
         $model->comforts_field = ArrayHelper::getColumn($model->getPlaceComforts()->all(), 'comfort_id');
+        $model->similar_field = ArrayHelper::getColumn($model->getPlaceSimilar()->all(), 'similar_id');
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             $model->uploadImages();
             $model->saveComforts();
+            $model->saveSimilar();
             return $this->redirect(['view', 'id' => $model->id]);
         }
 

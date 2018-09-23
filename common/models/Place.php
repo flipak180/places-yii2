@@ -15,13 +15,16 @@ use yii\helpers\ArrayHelper;
  * @property string $alias
  * @property int $user_id
  * @property int $city_id
+ * @property int $district_id
  * @property int $network_id
- * @property string $coordinates
+ * @property int $longitude
+ * @property int $latitude
  * @property string $address
  * @property string $phone
  * @property string $website
  * @property string $introtext
  * @property string $description
+ * @property string $opening_hours
  * @property string $rating
  * @property int $total_views
  * @property int $total_likes
@@ -33,6 +36,7 @@ class Place extends \yii\db\ActiveRecord
 {
 	public $images_field;
     public $comforts_field;
+    public $similar_field;
 
 	const STATUS_DELETED    = 0;
 	const STATUS_BLOCKED    = 5;
@@ -60,11 +64,11 @@ class Place extends \yii\db\ActiveRecord
     {
         return [
             [['name', 'user_id', 'city_id', 'coordinates', 'address'], 'required'],
-            [['user_id', 'city_id', 'network_id', 'total_views', 'total_likes', 'status'], 'integer'],
-            [['introtext', 'description'], 'string'],
-            [['rating'], 'number'],
+            [['user_id', 'city_id', 'district_id', 'network_id', 'total_views', 'total_likes', 'status'], 'integer'],
+            [['introtext', 'description', 'opening_hours'], 'string'],
+            [['rating', 'longitude', 'latitude'], 'number'],
 			[['alias'], 'unique'],
-			[['images_field', 'comforts_field'], 'safe'],
+			[['images_field', 'comforts_field', 'similar_field'], 'safe'],
             [['name', 'coordinates', 'address', 'phone', 'website'], 'string', 'max' => 255],
         ];
     }
@@ -80,16 +84,20 @@ class Place extends \yii\db\ActiveRecord
             'alias' => 'Алиас',
             'user_id' => 'Владелец',
             'city_id' => 'Город',
+            'district_id' => 'Район',
             'network_id' => 'Сеть',
-            'coordinates' => 'Координаты',
+            'longitude' => 'Долгота',
+            'latitude' => 'Широта',
             'address' => 'Адрес',
             'phone' => 'Телефон',
             'website' => 'Web-сайт',
             'introtext' => 'Аннотация',
             'description' => 'Описание',
+            'opening_hours' => 'Часы работы',
             'rating' => 'Рейтинг',
             'images_field' => 'Изображения',
             'comforts_field' => 'Удобства',
+            'similar_field' => 'Похожие заведения',
             'total_views' => 'Кол-во просмотров',
             'total_likes' => 'Кол-во лайков',
 			'status' => 'Статус',
@@ -110,6 +118,11 @@ class Place extends \yii\db\ActiveRecord
 	{
 		return $this->hasOne(City::className(), ['id' => 'city_id']);
 	}
+
+    public function getDistrict()
+    {
+        return $this->hasOne(District::className(), ['id' => 'district_id']);
+    }
 
 	public function getNetwork()
 	{
@@ -139,6 +152,16 @@ class Place extends \yii\db\ActiveRecord
     public function getComforts()
     {
         return $this->hasMany(Comfort::className(), ['id' => 'comfort_id'])->via('placeComforts');
+    }
+
+    public function getPlaceSimilar()
+    {
+        return $this->hasMany(PlaceSimilar::className(), ['place_id' => 'id']);
+    }
+
+    public function getSimilar()
+    {
+        return $this->hasMany(Place::className(), ['id' => 'similar_id'])->via('placeSimilar');
     }
 
 	/**
@@ -232,4 +255,18 @@ class Place extends \yii\db\ActiveRecord
     //     }
     //     return true;
     // }
+
+    public function saveSimilar()
+    {
+        if (is_array($this->similar_field)) {
+            PlaceSimilar::deleteAll(['place_id' => $this->id]);
+            foreach ($this->similar_field as $similar_id) {
+                $place_similar = new PlaceSimilar();
+                $place_similar->place_id = $this->id;
+                $place_similar->similar_id = $similar_id;
+                $place_similar->save();
+            }
+        }
+        return true;
+    }
 }

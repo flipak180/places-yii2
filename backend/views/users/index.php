@@ -26,7 +26,6 @@ $this->params['breadcrumbs'][] = $this->title;
             'name',
             'balance',
             //'avatar',
-            //'place_id',
             //'description:ntext',
             [
                 'attribute' => 'role',

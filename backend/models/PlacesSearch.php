@@ -18,9 +18,9 @@ class PlacesSearch extends Place
     public function rules()
     {
         return [
-            [['id', 'user_id', 'city_id', 'network_id', 'total_views', 'total_likes', 'status', 'created_at', 'updated_at'], 'integer'],
-            [['name', 'alias', 'coordinates', 'address', 'phone', 'website', 'introtext', 'description'], 'safe'],
-            [['rating'], 'number'],
+            [['id', 'user_id', 'city_id', 'district_id', 'network_id', 'total_views', 'total_likes', 'status', 'created_at', 'updated_at'], 'integer'],
+            [['name', 'alias', 'address', 'phone', 'website', 'introtext', 'description'], 'safe'],
+            [['rating', 'longitude', 'latitude'], 'number'],
         ];
     }
 
@@ -63,7 +63,10 @@ class PlacesSearch extends Place
             'id' => $this->id,
             'user_id' => $this->user_id,
             'city_id' => $this->city_id,
+            'district_id' => $this->district_id,
             'network_id' => $this->network_id,
+            'longitude' => $this->longitude,
+            'latitude' => $this->latitude,
             'rating' => $this->rating,
             'total_views' => $this->total_views,
             'total_likes' => $this->total_likes,
@@ -74,7 +77,6 @@ class PlacesSearch extends Place
 
         $query->andFilterWhere(['like', 'name', $this->name])
             ->andFilterWhere(['like', 'alias', $this->alias])
-            ->andFilterWhere(['like', 'coordinates', $this->coordinates])
             ->andFilterWhere(['like', 'address', $this->address])
             ->andFilterWhere(['like', 'phone', $this->phone])
             ->andFilterWhere(['like', 'website', $this->website])

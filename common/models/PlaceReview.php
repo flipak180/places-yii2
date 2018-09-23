@@ -21,7 +21,7 @@ use yii\behaviors\TimestampBehavior;
 class PlaceReview extends \yii\db\ActiveRecord
 {
     public $features;
-
+    
     const STATUS_BLOCKED    = 0;
     const STATUS_INACTIVE   = 5;
     const STATUS_ACTIVE     = 10;

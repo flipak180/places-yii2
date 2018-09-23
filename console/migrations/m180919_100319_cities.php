@@ -19,8 +19,11 @@ class m180919_100319_cities extends Migration
             'id'                => Schema::TYPE_PK,
             'name'              => Schema::TYPE_STRING . ' NOT NULL',
             'alias'             => Schema::TYPE_STRING . ' NOT NULL',
-            'time_shift'        => Schema::TYPE_SMALLINT,
+            'padezh_rodit'      => Schema::TYPE_STRING . ' NOT NULL',
+            'padezh_predl'      => Schema::TYPE_STRING . ' NOT NULL',
+            'time_shift'        => Schema::TYPE_TINYINT,
             'seo_text'          => Schema::TYPE_TEXT,
+            'position'          => Schema::TYPE_INTEGER . ' DEFAULT 0',
             'created_at'        => Schema::TYPE_INTEGER . ' NOT NULL',
             'updated_at'        => Schema::TYPE_INTEGER . ' NOT NULL',
         ], $tableOptions);
