@@ -30,8 +30,8 @@ use common\models\District;
     <?php else: ?>
         <?= $form->field($model, 'district_id')->dropDownList([], ['prompt' => 'Сперва выберите город', 'disabled' => true, 'class' => 'form-control district-select']) ?>
     <?php endif ?>
-    <?= $form->field($model, 'longitude')->textInput(['maxlength' => true]) ?>
     <?= $form->field($model, 'latitude')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'longitude')->textInput(['maxlength' => true]) ?>
     <div class="form-group">
         <?= Html::submitButton('Сохранить', ['class' => 'btn btn-success']) ?>
     </div>

@@ -34,6 +34,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'alias',
             'padezh_rodit',
             'padezh_predl',
+            'latitude',
+            'longitude',
             'time_shift:datetime',
             'created_at:datetime',
             'updated_at:datetime',

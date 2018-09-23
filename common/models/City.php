@@ -15,6 +15,8 @@ use yii\behaviors\TimestampBehavior;
  * @property string $padezh_predl
  * @property int $time_shift
  * @property string $seo_text
+ * @property string $latitude
+ * @property string $longitude
  * @property int $created_at
  * @property int $updated_at
  */
@@ -44,8 +46,17 @@ class City extends \yii\db\ActiveRecord
             [['name', 'alias'], 'required'],
             [['time_shift'], 'integer'],
             [['seo_text'], 'string'],
+            [['latitude', 'longitude'], 'number'],
             [['name', 'alias', 'padezh_rodit', 'padezh_predl'], 'string', 'max' => 255],
         ];
+    }
+
+    /**
+     * Relations
+     */
+    public function getCoords()
+    {
+        return implode(',', [$this->longitude, $this->latitude]);
     }
 
     /**
@@ -61,8 +72,22 @@ class City extends \yii\db\ActiveRecord
             'padezh_predl' => 'О чем?',
             'time_shift' => 'Разница во времени',
             'seo_text' => 'SEO-текст',
+            'latitude' => 'Широта',
+            'longitude' => 'Долгота',
             'created_at' => 'Дата добавления',
             'updated_at' => 'Дата обновления',
         ];
+    }
+
+    public function geocodeAll() {
+        foreach (self::find()->all() as $city) {
+            $xml = simplexml_load_file('https://geocode-maps.yandex.ru/1.x/?geocode='.$city->name);
+            if ($coords_str = $xml->GeoObjectCollection->featureMember[0]->GeoObject->Point->pos) {
+                $coords_arr = explode(' ', $coords_str);
+                $city->latitude = $coords_arr[0];
+                $city->longitude = $coords_arr[1];
+                $city->save(false);
+            }
+        }
     }
 }

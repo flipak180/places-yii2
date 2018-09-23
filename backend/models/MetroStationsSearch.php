@@ -20,7 +20,7 @@ class MetroStationsSearch extends MetroStation
         return [
             [['id', 'city_id', 'district_id', 'created_at', 'updated_at'], 'integer'],
             [['name'], 'safe'],
-            [['longitude', 'latitude'], 'number'],
+            [['latitude', 'longitude'], 'number'],
         ];
     }
 
@@ -63,8 +63,8 @@ class MetroStationsSearch extends MetroStation
             'id' => $this->id,
             'city_id' => $this->city_id,
             'district_id' => $this->district_id,
-            'longitude' => $this->longitude,
             'latitude' => $this->latitude,
+            'longitude' => $this->longitude,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ]);

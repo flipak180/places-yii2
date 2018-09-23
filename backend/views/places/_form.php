@@ -19,6 +19,8 @@ use common\models\PlaceNetwork;
 /* @var $this yii\web\View */
 /* @var $model common\models\Place */
 /* @var $form yii\widgets\ActiveForm */
+
+$this->registerJsFile('https://api-maps.yandex.ru/2.1/?lang=ru_RU');
 ?>
 
 <div class="place-form">
@@ -47,9 +49,10 @@ use common\models\PlaceNetwork;
     <?php else: ?>
         <?= $form->field($model, 'district_id')->dropDownList([], ['prompt' => 'Сперва выберите город', 'disabled' => true, 'class' => 'form-control district-select']) ?>
     <?php endif ?>
-    <?= $form->field($model, 'longitude')->textInput(['maxlength' => true]) ?>
     <?= $form->field($model, 'latitude')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'longitude')->textInput(['maxlength' => true]) ?>
     <?= $form->field($model, 'address')->textInput(['maxlength' => true]) ?>
+    <div id="place-map" data-coords="<?= $model->city ? $model->city->coords : '' ?>"></div>
     <?= $form->field($model, 'phone')->textInput(['maxlength' => true]) ?>
     <?= $form->field($model, 'website')->textInput(['maxlength' => true]) ?>
 	<?= $form->field($model, 'introtext')->widget(CKEditor::classname(), [

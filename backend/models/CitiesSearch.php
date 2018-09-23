@@ -20,6 +20,7 @@ class CitiesSearch extends City
         return [
             [['id', 'time_shift', 'created_at', 'updated_at'], 'integer'],
             [['name', 'alias', 'seo_text', 'padezh_rodit', 'padezh_predl'], 'safe'],
+            [['latitude', 'longitude'], 'number'],
         ];
     }
 
@@ -60,6 +61,8 @@ class CitiesSearch extends City
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
+            'latitude' => $this->latitude,
+            'longitude' => $this->longitude,
             'time_shift' => $this->time_shift,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,

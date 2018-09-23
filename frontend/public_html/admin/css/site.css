@@ -296,3 +296,7 @@ div.required label.control-label:after {
 #range-holiday label {
     margin-right: 15px;
 }
+
+#place-map{
+    height: 600px;
+}

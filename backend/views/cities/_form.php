@@ -15,6 +15,8 @@ use dosamigos\ckeditor\CKEditor;
     <?= $form->field($model, 'alias')->textInput(['maxlength' => true, 'class' => 'form-control alias-target']) ?>
     <?= $form->field($model, 'padezh_rodit')->textInput(['maxlength' => true]) ?>
     <?= $form->field($model, 'padezh_predl')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'latitude')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'longitude')->textInput(['maxlength' => true]) ?>
     <?= $form->field($model, 'time_shift')->input('number') ?>
     <?= $form->field($model, 'seo_text')->widget(CKEditor::classname(), [
         'options' => ['rows' => 6],

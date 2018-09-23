@@ -12,8 +12,8 @@ use yii\behaviors\TimestampBehavior;
  * @property string $name
  * @property int $city_id
  * @property int $district_id
- * @property string $longitude
  * @property string $latitude
+ * @property string $longitude
  * @property int $created_at
  * @property int $updated_at
  */
@@ -42,7 +42,7 @@ class MetroStation extends \yii\db\ActiveRecord
         return [
             [['name', 'city_id'], 'required'],
             [['city_id', 'district_id'], 'integer'],
-            [['longitude', 'latitude'], 'number'],
+            [['latitude', 'longitude'], 'number'],
             [['name'], 'string', 'max' => 255],
         ];
     }
@@ -70,8 +70,8 @@ class MetroStation extends \yii\db\ActiveRecord
             'name' => 'Название',
             'city_id' => 'Город',
             'district_id' => 'Район',
-            'longitude' => 'Долгота',
             'latitude' => 'Широта',
+            'longitude' => 'Долгота',
             'created_at' => 'Дата добавления',
             'updated_at' => 'Дата обновления',
         ];

@@ -20,7 +20,7 @@ class PlacesSearch extends Place
         return [
             [['id', 'user_id', 'city_id', 'district_id', 'network_id', 'total_views', 'total_likes', 'status', 'created_at', 'updated_at'], 'integer'],
             [['name', 'alias', 'address', 'phone', 'website', 'introtext', 'description'], 'safe'],
-            [['rating', 'longitude', 'latitude'], 'number'],
+            [['rating', 'latitude', 'longitude'], 'number'],
         ];
     }
 
@@ -65,8 +65,8 @@ class PlacesSearch extends Place
             'city_id' => $this->city_id,
             'district_id' => $this->district_id,
             'network_id' => $this->network_id,
-            'longitude' => $this->longitude,
             'latitude' => $this->latitude,
+            'longitude' => $this->longitude,
             'rating' => $this->rating,
             'total_views' => $this->total_views,
             'total_likes' => $this->total_likes,

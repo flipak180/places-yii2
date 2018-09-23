@@ -17,8 +17,8 @@ use yii\helpers\ArrayHelper;
  * @property int $city_id
  * @property int $district_id
  * @property int $network_id
- * @property int $longitude
- * @property int $latitude
+ * @property string $latitude
+ * @property string $longitude
  * @property string $address
  * @property string $phone
  * @property string $website
@@ -63,13 +63,13 @@ class Place extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'user_id', 'city_id', 'coordinates', 'address'], 'required'],
+            [['name', 'user_id', 'city_id', 'address'], 'required'],
             [['user_id', 'city_id', 'district_id', 'network_id', 'total_views', 'total_likes', 'status'], 'integer'],
             [['introtext', 'description', 'opening_hours'], 'string'],
-            [['rating', 'longitude', 'latitude'], 'number'],
+            [['rating', 'latitude', 'longitude'], 'number'],
 			[['alias'], 'unique'],
 			[['images_field', 'comforts_field', 'similar_field'], 'safe'],
-            [['name', 'coordinates', 'address', 'phone', 'website'], 'string', 'max' => 255],
+            [['name', 'address', 'phone', 'website'], 'string', 'max' => 255],
         ];
     }
 
@@ -86,8 +86,8 @@ class Place extends \yii\db\ActiveRecord
             'city_id' => 'Город',
             'district_id' => 'Район',
             'network_id' => 'Сеть',
-            'longitude' => 'Долгота',
             'latitude' => 'Широта',
+            'longitude' => 'Долгота',
             'address' => 'Адрес',
             'phone' => 'Телефон',
             'website' => 'Web-сайт',

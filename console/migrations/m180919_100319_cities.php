@@ -23,6 +23,8 @@ class m180919_100319_cities extends Migration
             'padezh_predl'      => Schema::TYPE_STRING . ' NOT NULL',
             'time_shift'        => Schema::TYPE_TINYINT,
             'seo_text'          => Schema::TYPE_TEXT,
+            'latitude'          => Schema::TYPE_DECIMAL . '(11, 8)',
+            'longitude'         => Schema::TYPE_DECIMAL . '(11, 8)',
             'position'          => Schema::TYPE_INTEGER . ' DEFAULT 0',
             'created_at'        => Schema::TYPE_INTEGER . ' NOT NULL',
             'updated_at'        => Schema::TYPE_INTEGER . ' NOT NULL',

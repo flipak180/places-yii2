@@ -104,5 +104,17 @@ $(function() {
             });
         });
     }
+
+    // Карта в форме добавления заведения
+    var place_map = $('#place-map');
+    if (place_map.length) ymaps.ready(initPlaceAddMap);
+
+    function initPlaceAddMap() {
+        console.log(place_map.data('coords').split(','))
+        var myMap = new ymaps.Map('place-map', {
+            center: place_map.data('coords').split(','),
+            zoom: 12
+        });
+    }
 	
 });
