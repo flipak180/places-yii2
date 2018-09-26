@@ -47,6 +47,12 @@ class CitiesController extends Controller
         ]);
     }
 
+    public function actionGetCoordinates($id)
+    {
+        $model = $this->findModel($id);
+        return $model->coordinates;
+    }
+
     /**
      * Displays a single City model.
      * @param integer $id

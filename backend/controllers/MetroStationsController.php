@@ -8,6 +8,7 @@ use backend\models\MetroStationsSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\AccessControl;
+use yii\web\Response;
 
 /**
  * MetroStationsController implements the CRUD actions for MetroStation model.
@@ -58,6 +59,12 @@ class MetroStationsController extends Controller
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
+    }
+
+    public function actionFindByCity($city_id)
+    {
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        return MetroStation::find()->where(['city_id' => $city_id])->orderBy('name ASC')->all();
     }
 
     /**

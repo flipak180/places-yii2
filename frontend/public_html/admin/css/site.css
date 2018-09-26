@@ -299,4 +299,59 @@ div.required label.control-label:after {
 
 #place-map{
     height: 600px;
+    margin-bottom: 30px;
+}
+
+/* sheduler */
+#sheduler{
+    text-align: center;
+    display: inline-block;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #ccc;
+}
+.shedule-buttons{
+    margin-bottom: 15px;
+}
+.shedule-row{
+    display: flex;
+}
+.shedule-label,
+.shedule-checkbox,
+.shedule-empty,
+.shedule-hour,
+.shedule-hour:after{
+    width: 26px;
+    height: 26px;
+}
+.shedule-label{
+    font-size: 12px;
+    color: #8d8d8d;
+}
+.shedule-hour{
+    position: relative;
+    cursor: pointer;
+    border: 1px solid #fff;
+}
+.shedule-hour input{
+    display: none;
+}
+.shedule-hour:after {
+    content: '-';
+    color: #999;
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 17px;
+    line-height: 27px;
+}
+.shedule-hour.active{
+    background: #5e9d06;
+}
+.shedule-hour.active:hover{
+    background: #75bd0f;
+}
+.shedule-hour.active:after{
+    content: '+';
+    color: #fff;
 }

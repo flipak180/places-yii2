@@ -6,27 +6,22 @@ use Yii;
 use yii\behaviors\TimestampBehavior;
 
 /**
- * This is the model class for table "place_override_hours".
+ * This is the model class for table "place_metro".
  *
  * @property int $id
  * @property int $place_id
- * @property string $start_date
- * @property string $end_date
- * @property int $weekday
- * @property string $open_hour
- * @property string $close_hour
- * @property int $closed
+ * @property int $metro_id
  * @property int $created_at
  * @property int $updated_at
  */
-class PlaceOverrideHour extends \yii\db\ActiveRecord
+class PlaceMetro extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
      */
     public static function tableName()
     {
-        return 'place_override_hours';
+        return 'place_metro';
     }
 
     public function behaviors()
@@ -42,9 +37,8 @@ class PlaceOverrideHour extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['place_id', 'start_date', 'end_date', 'weekday', 'open_hour', 'close_hour', 'closed'], 'required'],
-            [['place_id', 'weekday', 'closed'], 'integer'],
-            [['start_date', 'end_date', 'open_hour', 'close_hour'], 'safe'],
+            [['place_id', 'metro_id'], 'required'],
+            [['place_id', 'metro_id'], 'integer'],
         ];
     }
 
@@ -56,6 +50,11 @@ class PlaceOverrideHour extends \yii\db\ActiveRecord
         return $this->hasOne(Place::className(), ['id' => 'place_id']);
     }
 
+    public function getMetro()
+    {
+        return $this->hasOne(MetroStation::className(), ['id' => 'metro_id']);
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -64,12 +63,7 @@ class PlaceOverrideHour extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'place_id' => 'Заведение',
-            'start_date' => 'Начало периода',
-            'end_date' => 'Конец периода',
-            'weekday' => 'День недели',
-            'open_hour' => 'Открытие',
-            'close_hour' => 'Закрытие',
-            'closed' => 'Закрыт',
+            'metro_id' => 'Станция метро',
             'created_at' => 'Дата добавления',
             'updated_at' => 'Дата обновления',
         ];

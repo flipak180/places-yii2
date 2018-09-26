@@ -54,7 +54,7 @@ class City extends \yii\db\ActiveRecord
     /**
      * Relations
      */
-    public function getCoords()
+    public function getCoordinates()
     {
         return implode(',', [$this->longitude, $this->latitude]);
     }

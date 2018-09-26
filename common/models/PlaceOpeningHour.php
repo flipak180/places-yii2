@@ -11,15 +11,12 @@ use yii\behaviors\TimestampBehavior;
  * @property int $id
  * @property int $place_id
  * @property int $weekday
- * @property string $open_hour
- * @property string $close_hour
+ * @property int $hour
  * @property int $created_at
  * @property int $updated_at
  */
 class PlaceOpeningHour extends \yii\db\ActiveRecord
 {
-    // https://stackoverflow.com/questions/4464898/best-way-to-store-working-hours-and-query-it-efficiently/4465072
-    
     /**
      * {@inheritdoc}
      */
@@ -41,9 +38,8 @@ class PlaceOpeningHour extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['place_id', 'weekday', 'open_hour', 'close_hour'], 'required'],
-            [['place_id', 'weekday'], 'integer'],
-            [['open_hour', 'close_hour'], 'safe'],
+            [['place_id', 'weekday', 'hour'], 'required'],
+            [['place_id', 'weekday', 'hour'], 'integer'],
         ];
     }
 
@@ -64,8 +60,7 @@ class PlaceOpeningHour extends \yii\db\ActiveRecord
             'id' => 'ID',
             'place_id' => 'Заведение',
             'weekday' => 'День недели',
-            'open_hour' => 'Открытие',
-            'close_hour' => 'Закрытие',
+            'hour' => 'Час',
             'created_at' => 'Дата добавления',
             'updated_at' => 'Дата обновления',
         ];

@@ -5,6 +5,7 @@ namespace backend\controllers;
 use Yii;
 use common\models\Place;
 use common\models\PlaceImage;
+use common\models\PlaceOpeningHour;
 use backend\models\PlacesSearch;
 use backend\models\ReviewsSearch;
 use yii\web\Controller;
@@ -83,7 +84,18 @@ class PlacesController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        $opening_hours = Yii::$app->request->post('shedule-hour', []);
+        if (count($opening_hours)) {
+            PlaceOpeningHour::deleteAll(['place_id' => $id]);
+            foreach ($opening_hours as $weekday => $opening_weeks) {
+                foreach ($opening_weeks as $hour => $opening_week) {
+                    $place_opening_hour = new PlaceOpeningHour();
+                    $place_opening_hour->place_id = $id;
+                    $place_opening_hour->weekday = $weekday;
+                    $place_opening_hour->hour = $hour;
+                    $place_opening_hour->save();
+                }
+            }
             return $this->redirect(Yii::$app->request->referrer);
         }
 
@@ -105,6 +117,7 @@ class PlacesController extends Controller
             $model->uploadImages();
             $model->saveComforts();
             $model->saveSimilar();
+            $model->saveMetro();
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
@@ -125,11 +138,13 @@ class PlacesController extends Controller
         $model = $this->findModel($id);
         $model->comforts_field = ArrayHelper::getColumn($model->getPlaceComforts()->all(), 'comfort_id');
         $model->similar_field = ArrayHelper::getColumn($model->getPlaceSimilar()->all(), 'similar_id');
+        $model->metro_field = ArrayHelper::getColumn($model->getPlaceMetro()->all(), 'metro_id');
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             $model->uploadImages();
             $model->saveComforts();
             $model->saveSimilar();
+            $model->saveMetro();
             return $this->redirect(['view', 'id' => $model->id]);
         }
 

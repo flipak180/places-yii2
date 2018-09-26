@@ -37,6 +37,8 @@ class Place extends \yii\db\ActiveRecord
 	public $images_field;
     public $comforts_field;
     public $similar_field;
+    public $metro_field;
+    public $coordinates;
 
 	const STATUS_DELETED    = 0;
 	const STATUS_BLOCKED    = 5;
@@ -68,7 +70,7 @@ class Place extends \yii\db\ActiveRecord
             [['introtext', 'description', 'opening_hours'], 'string'],
             [['rating', 'latitude', 'longitude'], 'number'],
 			[['alias'], 'unique'],
-			[['images_field', 'comforts_field', 'similar_field'], 'safe'],
+			[['images_field', 'comforts_field', 'metro_field', 'similar_field', 'coordinates'], 'safe'],
             [['name', 'address', 'phone', 'website'], 'string', 'max' => 255],
         ];
     }
@@ -86,6 +88,7 @@ class Place extends \yii\db\ActiveRecord
             'city_id' => 'Город',
             'district_id' => 'Район',
             'network_id' => 'Сеть',
+            'coordinates' => 'Координаты',
             'latitude' => 'Широта',
             'longitude' => 'Долгота',
             'address' => 'Адрес',
@@ -97,6 +100,7 @@ class Place extends \yii\db\ActiveRecord
             'rating' => 'Рейтинг',
             'images_field' => 'Изображения',
             'comforts_field' => 'Удобства',
+            'metro_field' => 'Станции метро',
             'similar_field' => 'Похожие заведения',
             'total_views' => 'Кол-во просмотров',
             'total_likes' => 'Кол-во лайков',
@@ -154,6 +158,16 @@ class Place extends \yii\db\ActiveRecord
         return $this->hasMany(Comfort::className(), ['id' => 'comfort_id'])->via('placeComforts');
     }
 
+    public function getPlaceMetro()
+    {
+        return $this->hasMany(PlaceMetro::className(), ['place_id' => 'id']);
+    }
+
+    public function getMetro()
+    {
+        return $this->hasMany(MetroStation::className(), ['id' => 'metro_id'])->via('placeMetro');
+    }
+
     public function getPlaceSimilar()
     {
         return $this->hasMany(PlaceSimilar::className(), ['place_id' => 'id']);
@@ -162,6 +176,17 @@ class Place extends \yii\db\ActiveRecord
     public function getSimilar()
     {
         return $this->hasMany(Place::className(), ['id' => 'similar_id'])->via('placeSimilar');
+    }
+
+    public function getOpeningHours()
+    {
+        return $this->hasMany(PlaceOpeningHour::className(), ['place_id' => 'id']);
+    }
+
+    public function getDefaultCoordinates()
+    {
+        if ($this->longitude and $this->latitude) return implode(', ', [$this->latitude, $this->longitude]);
+        if ($this->city) return $this->city->coordinates;
     }
 
 	/**
@@ -218,6 +243,20 @@ class Place extends \yii\db\ActiveRecord
                 $place_comfort->place_id = $this->id;
                 $place_comfort->comfort_id = $comfort_id;
                 $place_comfort->save();
+            }
+        }
+        return true;
+    }
+
+    public function saveMetro()
+    {
+        if (is_array($this->metro_field)) {
+            PlaceMetro::deleteAll(['place_id' => $this->id]);
+            foreach ($this->metro_field as $metro_id) {
+                $place_metro = new PlaceMetro();
+                $place_metro->place_id = $this->id;
+                $place_metro->metro_id = $metro_id;
+                $place_metro->save();
             }
         }
         return true;

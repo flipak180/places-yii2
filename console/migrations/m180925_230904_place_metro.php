@@ -1,12 +1,12 @@
 <?php
 
-use yii\db\Schema;
 use yii\db\Migration;
+use yii\db\Schema;
 
 /**
- * Class m180921_111209_place_opening_hours
+ * Class m180925_230904_place_metro
  */
-class m180921_111209_place_opening_hours extends Migration
+class m180925_230904_place_metro extends Migration
 {
     public function up()
     {
@@ -15,11 +15,10 @@ class m180921_111209_place_opening_hours extends Migration
             $tableOptions = 'CHARACTER SET utf8 COLLATE utf8_general_ci ENGINE=InnoDB';
         }
 
-        $this->createTable('{{%place_opening_hours}}', [
+        $this->createTable('{{%place_metro}}', [
             'id'            => Schema::TYPE_PK,
             'place_id'      => Schema::TYPE_INTEGER . ' NOT NULL',
-            'weekday'       => Schema::TYPE_TINYINT . ' NOT NULL',
-            'hour'          => Schema::TYPE_TINYINT . ' NOT NULL',
+            'metro_id'      => Schema::TYPE_INTEGER . ' NOT NULL',
             'created_at'    => Schema::TYPE_INTEGER . ' NOT NULL',
             'updated_at'    => Schema::TYPE_INTEGER . ' NOT NULL',
         ], $tableOptions);
@@ -27,6 +26,6 @@ class m180921_111209_place_opening_hours extends Migration
 
     public function down()
     {
-        $this->dropTable('{{%place_opening_hours}}');
+        $this->dropTable('{{%place_metro}}');
     }
 }

@@ -14,6 +14,7 @@ use common\models\City;
 use common\models\District;
 use common\models\Place;
 use common\models\Comfort;
+use common\models\MetroStation;
 use common\models\PlaceNetwork;
 
 /* @var $this yii\web\View */
@@ -36,7 +37,7 @@ $this->registerJsFile('https://api-maps.yandex.ru/2.1/?lang=ru_RU');
 	]); ?>
 	<?= $form->field($model, 'city_id')->widget(Select2::classname(), [
 		'data' => ArrayHelper::map(City::find()->orderBy('name ASC')->all(), 'id', 'name'),
-		'options' => ['placeholder' => 'Выберите город'],
+		'options' => ['placeholder' => 'Выберите город', 'class' => 'form-control city-select'],
 		'pluginOptions' => [
 			'allowClear' => true
 		],
@@ -49,10 +50,26 @@ $this->registerJsFile('https://api-maps.yandex.ru/2.1/?lang=ru_RU');
     <?php else: ?>
         <?= $form->field($model, 'district_id')->dropDownList([], ['prompt' => 'Сперва выберите город', 'disabled' => true, 'class' => 'form-control district-select']) ?>
     <?php endif ?>
-    <?= $form->field($model, 'latitude')->textInput(['maxlength' => true]) ?>
-    <?= $form->field($model, 'longitude')->textInput(['maxlength' => true]) ?>
-    <?= $form->field($model, 'address')->textInput(['maxlength' => true]) ?>
-    <div id="place-map" data-coords="<?= $model->city ? $model->city->coords : '' ?>"></div>
+    <?php if ($model->city_id): ?>
+        <?= $form->field($model, 'metro_field')->widget(Select2::classname(), [
+            'data' => ArrayHelper::map(MetroStation::find()->where(['city_id' => $model->city_id])->orderBy('name ASC')->all(), 'id', 'name'),
+            'options' => ['placeholder' => 'Выберите станции метро', 'class' => 'form-control metro-select', 'multiple' => true],
+            'pluginOptions' => [
+                'allowClear' => true,
+                'maximumSelectionLength' => 3,
+            ],
+        ]); ?>
+    <?php else: ?>
+        <?= $form->field($model, 'metro_field')->dropDownList([], ['prompt' => 'Сперва выберите город', 'disabled' => true, 'class' => 'form-control metro-select']) ?>
+    <?php endif ?>
+    <div class="geo-block" <?= $model->isNewRecord ? 'style="display: none;"' : '' ?> >
+        <?php $model->coordinates = $model->defaultCoordinates; ?>
+        <?= $form->field($model, 'coordinates')->textInput(['maxlength' => true]) ?>
+        <?= $form->field($model, 'latitude')->textInput(['maxlength' => true]) ?>
+        <?= $form->field($model, 'longitude')->textInput(['maxlength' => true]) ?>
+        <?= $form->field($model, 'address')->textInput(['maxlength' => true]) ?>
+        <div id="place-map" data-coords="<?= $model->defaultCoordinates ?>"></div>
+    </div>
     <?= $form->field($model, 'phone')->textInput(['maxlength' => true]) ?>
     <?= $form->field($model, 'website')->textInput(['maxlength' => true]) ?>
 	<?= $form->field($model, 'introtext')->widget(CKEditor::classname(), [

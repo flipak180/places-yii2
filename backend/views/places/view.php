@@ -15,7 +15,13 @@ $this->title = $model->name;
 $this->params['breadcrumbs'][] = ['label' => 'Заведения', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 
-$model->comforts_field = ArrayHelper::getColumn($model->getComforts()->all(), 'name');
+$model->comforts_field = ArrayHelper::map($model->getComforts()->all(), 'id', 'name');
+$model->similar_field = ArrayHelper::map($model->getSimilar()->all(), 'id', function($item) {
+    return Html::a($item->name, ['places/view', 'id' => $item->id]);
+});
+$model->metro_field = ArrayHelper::map($model->getMetro()->all(), 'id', function($item) {
+    return Html::a($item->name, ['metro-stations/view', 'id' => $item->id]);
+});
 ?>
 
 <div class="place-view">
@@ -40,9 +46,9 @@ $model->comforts_field = ArrayHelper::getColumn($model->getComforts()->all(), 'n
             <?php endforeach ?>
         <?php endif ?>
     </div>
-    <pre>
-        <?= $model->description ?>
-    </pre>
+    <?php if ($model->description): ?>
+        <pre><?= $model->description ?></pre>
+    <?php endif ?>
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
@@ -65,13 +71,18 @@ $model->comforts_field = ArrayHelper::getColumn($model->getComforts()->all(), 'n
                 'value' => $model->district ? Html::a($model->district->name, ['districts/view', 'id' => $model->district_id]) : '-',
             ],
             [
-                'attribute' => 'network_id',
+                'attribute' => 'metro_field',
                 'format' => 'raw',
-                'value' => $model->network ? Html::a($model->network->name, ['place-networks/view', 'id' => $model->network_id]) : '-',
+                'value' => implode('<br>', $model->metro_field),
             ],
             'latitude',
             'longitude',
             'address',
+            [
+                'attribute' => 'network_id',
+                'format' => 'raw',
+                'value' => $model->network ? Html::a($model->network->name, ['place-networks/view', 'id' => $model->network_id]) : '-',
+            ],
             'phone',
             'website',
             'introtext:ntext',
@@ -79,6 +90,11 @@ $model->comforts_field = ArrayHelper::getColumn($model->getComforts()->all(), 'n
                 'attribute' => 'comforts_field',
                 'format' => 'raw',
                 'value' => implode('<br>', $model->comforts_field),
+            ],
+            [
+                'attribute' => 'similar_field',
+                'format' => 'raw',
+                'value' => implode('<br>', $model->similar_field),
             ],
             'rating',
             'total_views',
