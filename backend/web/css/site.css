@@ -309,6 +309,12 @@ div.required label.control-label:after {
     padding-bottom: 15px;
     margin-bottom: 15px;
     border-bottom: 1px solid #ccc;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none;
 }
 .shedule-buttons{
     margin-bottom: 15px;
@@ -327,6 +333,9 @@ div.required label.control-label:after {
 .shedule-label{
     font-size: 12px;
     color: #8d8d8d;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .shedule-hour{
     position: relative;

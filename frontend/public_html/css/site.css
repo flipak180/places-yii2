@@ -118,3 +118,8 @@ a.desc:after {
 .nav > li > form > button.logout:focus {
     outline: none;
 }
+
+#index-map{
+    height: calc(100vh - 100px);
+    margin-bottom: 30px;
+}
