@@ -1,10 +1,10 @@
 <?php
 
-use yii\helpers\Html;
-use yii\grid\GridView;
-use yii\helpers\ArrayHelper;
 use common\models\City;
 use common\models\User;
+use yii\grid\GridView;
+use yii\helpers\ArrayHelper;
+use yii\helpers\Html;
 
 /* @var $this yii\web\View */
 /* @var $searchModel backend\models\PlacesSearch */
@@ -26,7 +26,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             'id',
             'name',
-            //'alias',
+            'alias',
             [
                 'attribute' => 'user_id',
                 'format' => 'raw',

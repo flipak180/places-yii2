@@ -5,7 +5,13 @@ namespace common\models;
 use Yii;
 use yii\behaviors\TimestampBehavior;
 use yii\web\UploadedFile;
-use yii\helpers\ArrayHelper;
+
+// Расчет расстояния
+// https://stackoverflow.com/a/5548877/2756911
+// SELECT id, latitude, longitude, SQRT(
+//     POW(69.1 * (latitude - 59.837906), 2) +
+//     POW(69.1 * (30.509141 - longitude) * COS(latitude / 57.3), 2)) AS distance
+// FROM `places` HAVING distance < 25 ORDER BY distance
 
 /**
  * This is the model class for table "places".
@@ -65,13 +71,13 @@ class Place extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'user_id', 'city_id', 'address'], 'required'],
+            [['name', 'city_id', 'address'], 'required'],
             [['user_id', 'city_id', 'district_id', 'network_id', 'total_views', 'total_likes', 'status'], 'integer'],
-            [['introtext', 'description', 'opening_hours'], 'string'],
+            [['introtext', 'description'], 'string'],
             [['rating', 'latitude', 'longitude'], 'number'],
 			[['alias'], 'unique'],
 			[['images_field', 'comforts_field', 'metro_field', 'similar_field', 'coordinates'], 'safe'],
-            [['name', 'address', 'phone', 'website'], 'string', 'max' => 255],
+            [['name', 'address', 'phone', 'website', 'opening_hours'], 'string', 'max' => 255],
         ];
     }
 

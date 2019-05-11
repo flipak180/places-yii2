@@ -24,7 +24,9 @@
         "himiklab/yii2-sortable-grid-view-widget" : "*",
         "2amigos/yii2-ckeditor-widget" : "~1.0",
         "yiisoft/yii2-authclient": "~2.1.0",
-        "kotchuprik/yii2-odnoklassniki-authclient": "*"
+        "kotchuprik/yii2-odnoklassniki-authclient": "*",
+        "dastanaron/yii2-translit": "^1.0",
+        "yiisoft/yii2-elasticsearch": "2.1.x-dev"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",

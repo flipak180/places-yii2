@@ -2,19 +2,19 @@
 
 namespace backend\controllers;
 
-use Yii;
+use backend\models\PlacesSearch;
+use backend\models\ReviewsSearch;
 use common\models\Place;
 use common\models\PlaceImage;
 use common\models\PlaceOpeningHour;
-use backend\models\PlacesSearch;
-use backend\models\ReviewsSearch;
+use dastanaron\translit\Translit;
+use himiklab\thumbnail\EasyThumbnailImage;
+use Yii;
+use yii\filters\AccessControl;
+use yii\helpers\ArrayHelper;
+use yii\imagine\Image;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\filters\AccessControl;
-use yii\web\UploadedFile;
-use yii\imagine\Image;
-use himiklab\thumbnail\EasyThumbnailImage;
-use yii\helpers\ArrayHelper;
 
 /**
  * PlacesController implements the CRUD actions for Place model.
@@ -45,6 +45,20 @@ class PlacesController extends Controller
      */
     public function actionIndex()
     {
+        // $place = Place::findOne(32);
+        // $elastic_place = new ElasticPlace();
+        // $elastic_place->attributes = [
+        //     'id' => $place->id,
+        //     'name' => $place->name,
+        //     'address' => $place->address,
+        //     'description' => $place->description,
+        // ];
+        // $elastic_place->primaryKey = $place->id;
+        // $elastic_place->save();
+
+        //$result = ElasticPlace::find()->query(['match' => ['id' => 32]])->all();
+        //Yii::info(print_r($result, 1));
+
         $searchModel = new PlacesSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -52,6 +66,50 @@ class PlacesController extends Controller
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
+    }
+
+    public function actionImport()
+    {
+        $translit = new Translit();
+        $places = json_decode(file_get_contents('places.txt'), 1);
+        // foreach ($places as $place) {
+        //     $new_place = new Place();
+        //     $new_place->id            = $place['id'];
+        //     $new_place->name          = $place['name'];
+        //     $new_place->alias         = $translit->translit($place['name'], false, 'ru-en');
+        //     $new_place->user_id       = $place['user_id'];
+        //     $new_place->city_id       = $place['city_id'];
+        //     $new_place->district_id   = $place['district_id'];
+        //     $new_place->network_id    = $place['chain_id'];
+        //     // $new_place->coordinates   = $place['name'];
+        //     $new_place->latitude      = $place['latitude'];
+        //     $new_place->longitude     = $place['longitude'];
+        //     $new_place->address       = $place['address'] ? $place['address'] : '-';
+        //     $new_place->phone         = $place['phone'];
+        //     $new_place->website       = $place['website'];
+        //     $new_place->introtext     = $place['introtext'];
+        //     $new_place->description   = $place['content'];
+        //     $new_place->opening_hours = $place['opening_hours'];
+        //     $new_place->rating        = $place['rate'];
+        //     // $new_place->images_field  = $place['name'];
+        //     // $new_place->comforts_field = $place['name'];
+        //     // $new_place->metro_field   = $place['name'];
+        //     // $new_place->similar_field = $place['name'];
+        //     $new_place->total_views   = $place['views'];
+        //     $new_place->total_likes   = $place['recommendations'];
+        //     $new_place->status        = $place['status'];
+        //     $new_place->created_at    = $place['created_at'];
+        //     $new_place->updated_at    = $place['updated_at'];
+        //     if (!$new_place->save()) {
+        //         Yii::info(print_r($new_place->errors, 1));
+        //     } else {
+        //         for ($i = 2; $i < 100; $i++) { 
+        //             $new_place->alias = $new_place->alias.$i;
+        //             if ($new_place->save()) break;
+        //         }
+        //     }
+        // }
+        return count($places);
     }
 
     /**
@@ -67,6 +125,11 @@ class PlacesController extends Controller
         ]);
     }
 
+    /**
+     * @param $id
+     * @return string
+     * @throws NotFoundHttpException
+     */
     public function actionViewReviews($id)
     {
         $model = $this->findModel($id);
@@ -80,6 +143,11 @@ class PlacesController extends Controller
         ]);
     }
 
+    /**
+     * @param $id
+     * @return string|\yii\web\Response
+     * @throws NotFoundHttpException
+     */
     public function actionOpeningHours($id)
     {
         $model = $this->findModel($id);
@@ -156,8 +224,10 @@ class PlacesController extends Controller
     /**
      * Deletes an image of Product model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param integer $image_id
+     * @param $id
      * @return mixed
+     * @throws \Throwable
+     * @throws \yii\db\StaleObjectException
      */
     public function actionDeleteImage($id)
     {
@@ -168,6 +238,10 @@ class PlacesController extends Controller
         return;
     }
 
+    /**
+     * @param $order
+     * @return bool
+     */
     public function actionSortImages($order)
     {
         foreach (explode(';', $order) as $key => $image_id) {
@@ -178,6 +252,13 @@ class PlacesController extends Controller
         return true;
     }
 
+    /**
+     * @param $id
+     * @param int $angle
+     * @return string|void
+     * @throws \himiklab\thumbnail\FileNotFoundException
+     * @throws \yii\base\InvalidConfigException
+     */
     public function actionRotateImage($id, $angle = 0)
     {
         if ($image_obj = PlaceImage::findOne($id)) {
@@ -198,7 +279,7 @@ class PlacesController extends Controller
     public function actionDelete($id)
     {
 		$model = $this->findModel($id);
-		$model->status = User::STATUS_DELETED;
+		$model->status = Place::STATUS_DELETED;
 		$model->save(false);
 		return $this->redirect(['index']);
     }

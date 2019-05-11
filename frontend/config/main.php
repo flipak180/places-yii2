@@ -13,6 +13,9 @@ return [
     'bootstrap' => ['log'],
     'controllerNamespace' => 'frontend\controllers',
     'components' => [
+        'places' => [
+            'class' => 'frontend\components\PlacesComponent',
+        ],
         'request' => [
             'csrfParam' => '_csrf-frontend',
         ],
@@ -41,6 +44,9 @@ return [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                [
+                    'class' => 'app\components\PlaceUrlRule',
+                ],
             ],
         ],
     ],
