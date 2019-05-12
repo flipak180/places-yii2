@@ -7,6 +7,7 @@ $config = [
             'cookieValidationKey' => '',
         ],
     ],
+    'defaultRoute' => 'places/index',
 ];
 
 if (!YII_ENV_TEST) {

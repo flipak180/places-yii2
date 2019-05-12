@@ -11,14 +11,17 @@ class PlaceUrlRule extends BaseObject implements UrlRuleInterface
 {
     public function createUrl($manager, $route, $params)
     {
-        if ($route === 'car/index') {
-            if (isset($params['manufacturer'], $params['model'])) {
-                return $params['manufacturer'] . '/' . $params['model'];
-            } elseif (isset($params['manufacturer'])) {
-                return $params['manufacturer'];
+        if ($route === 'places/view') {
+            if (isset($params['id']) and $place = Place::findOne($params['id'])) {
+                return $place->city->alias . '/' . $place->alias;
             }
         }
-        return false; // this rule does not apply
+        if ($route === 'places/index') {
+            if (isset($params['city']) and $city = City::findOne($params['city'])) {
+                return $city->alias;
+            }
+        }
+        return false;
     }
 
     public function parseRequest($manager, $request)

@@ -2,7 +2,10 @@
 
 namespace common\models;
 
+use himiklab\thumbnail\EasyThumbnailImage;
+use himiklab\thumbnail\FileNotFoundException;
 use Yii;
+use yii\base\InvalidConfigException;
 use yii\behaviors\TimestampBehavior;
 use yii\web\UploadedFile;
 
@@ -37,6 +40,25 @@ use yii\web\UploadedFile;
  * @property int $status
  * @property int $created_at
  * @property int $updated_at
+ *
+ * @property User $user
+ * @property City $city
+ * @property District $district
+ * @property PlaceNetwork $network
+ * @property PlaceImage $image
+ * @property PlaceImage[] $images
+ * @property PlaceReview[] $reviews
+ * @property PlaceComfort[] $placeComforts
+ * @property Comfort[] $comforts
+ * @property PlaceMetro[] $placeMetro
+ * @property MetroStation[] $metro
+ * @property PlaceSimilar[] $placeSimilar
+ * @property Place[] $similar
+ * @property PlaceOpeningHour[] $openingHours
+ * @property string $defaultCoordinates
+ * @property string $statusName
+ * @property array $statusArr
+ * @property string $mainImage
  */
 class Place extends \yii\db\ActiveRecord
 {
@@ -48,6 +70,7 @@ class Place extends \yii\db\ActiveRecord
 
 	const STATUS_DELETED    = 0;
 	const STATUS_BLOCKED    = 5;
+	const STATUS_CLOSE      = -1;
 	const STATUS_ACTIVE     = 10;
 
     /**
@@ -195,6 +218,22 @@ class Place extends \yii\db\ActiveRecord
         if ($this->city) return $this->city->coordinates;
     }
 
+    /**
+     * @param int $width
+     * @param int $height
+     * @return string
+     * @throws FileNotFoundException
+     * @throws InvalidConfigException
+     */
+    public function getMainImage($width = 272, $height = 250)
+    {
+        if ($this->image) {
+            return EasyThumbnailImage::thumbnailFileUrl(Yii::getAlias('@frontend_web').$this->image->path, 272, 250);
+        } else {
+            return '/design/assets/uploads/place-1.jpg';
+        }
+    }
+
 	/**
 	 * Statuses
 	 */
@@ -206,6 +245,9 @@ class Place extends \yii\db\ActiveRecord
 			case self::STATUS_BLOCKED:
 				return 'Заблокировано';
 				break;
+            case self::STATUS_CLOSE:
+                return 'Закрыто';
+                break;
 			case self::STATUS_ACTIVE:
 				return 'Активно';
 				break;
@@ -217,7 +259,8 @@ class Place extends \yii\db\ActiveRecord
 
 	public function getStatusArr() {
 		return [
-			self::STATUS_ACTIVE => 'Активно',
+            self::STATUS_ACTIVE => 'Активно',
+			self::STATUS_CLOSE => 'Закрыто',
 			self::STATUS_BLOCKED => 'Заблокировано',
 		];
 	}

@@ -2,8 +2,8 @@
 
 namespace frontend\controllers;
 
-use backend\models\PlacesSearch;
 use common\models\Place;
+use frontend\models\PlacesSearch;
 use Yii;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;

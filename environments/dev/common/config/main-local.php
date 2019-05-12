@@ -5,7 +5,7 @@ return [
             'class' => 'yii\db\Connection',
             'dsn' => 'mysql:host=localhost;dbname=places',
             'username' => 'skav',
-            'password' => '7002736',
+            'password' => '123123',
             'charset' => 'utf8',
             // 'schemaCache' => 'cache',
             // 'schemaCacheDuration' => '3600',
