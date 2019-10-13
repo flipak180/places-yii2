@@ -12,10 +12,11 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <?= ListView::widget([
     'dataProvider' => $dataProvider,
-    'layout' => '<div class="top">{summary}<div style="display: none;">{sorter}</div></div><div class="list">{items}</div>{pager}',
+    'layout' => '<div class="top"><span>{summary}</span><div style="display: none;">{sorter}</div></div><div class="list">{items}</div>{pager}',
     'itemView' => '_list-item',
     'itemOptions' => ['class' => 'item'],
     'options' => ['class' => 'places list-view'],
+    'summary' => $searchModel->getSummaryText($dataProvider->totalCount),
 ]); ?>
 
 <div class="places">

@@ -42,7 +42,9 @@ class PlacesSearch extends Place
      */
     public function search($params)
     {
-        $query = Place::find()->where(['in', 'status', [self::STATUS_ACTIVE, self::STATUS_CLOSE]]);
+        $query = Place::find()
+
+            ->where(['in', 'status', [self::STATUS_ACTIVE, self::STATUS_CLOSE]]);
 
         if (Yii::$app->places->city) {
             $query->andWhere(['city_id' => Yii::$app->places->city->id]);
@@ -109,5 +111,13 @@ class PlacesSearch extends Place
             ->andFilterWhere(['like', 'description', $this->description]);
 
         return $dataProvider;
+    }
+
+    /**
+     * @param $total
+     * @return string
+     */
+    public function getSummaryText($total) {
+        return Yii::t('app', 'Найдено: {n, plural, =1{# кальянная} one{# кальянная} few{# кальянные} many{# кальянных} other{# кальянных}}', ['n' => $total]);
     }
 }

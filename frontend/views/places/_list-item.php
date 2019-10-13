@@ -8,7 +8,7 @@
 <div class="main" style="background-image: url(<?= $model->mainImage ?>)">
     <div class="rating active">
         <svg width="16" height="15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.077 4.935c.409.058.742.333.87.717a1.03 1.03 0 0 1-.273 1.08L12.617 9.65l.722 4.12c.07.397-.094.792-.428 1.03a1.086 1.086 0 0 1-1.133.08L8 12.934l-3.778 1.945c-.359.184-.809.15-1.133-.08a1.037 1.037 0 0 1-.429-1.03l.722-4.12L.325 6.734a1.033 1.033 0 0 1-.272-1.08c.128-.385.46-.659.87-.718l4.223-.6L7.036.586C7.217.225 7.586 0 8 0c.412 0 .782.225.965.587l1.889 3.747 4.223.601z"/></svg>
-        <span>4.8</span>
+        <span><?= $model->rating ? $model->rating : 'Нет оценок' ?></span>
     </div>
     <h2><a href="<?= $model->city->alias.'/'.$model->alias ?>"><?= $model->name ?></a></h2>
     <span class="btn btn-success">Открыто</span>
