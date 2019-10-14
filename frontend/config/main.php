@@ -13,8 +13,11 @@ return [
     'bootstrap' => ['log'],
     'controllerNamespace' => 'frontend\controllers',
     'components' => [
-        'places' => [
-            'class' => 'frontend\components\PlacesComponent',
+        'cityDetector' => [
+            'class' => 'frontend\components\CityDetectorComponent',
+        ],
+        'markup' => [
+            'class' => 'frontend\components\MarkupComponent',
         ],
         'request' => [
             'csrfParam' => '_csrf-frontend',

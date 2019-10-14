@@ -1,5 +1,6 @@
 <?php
 
+
 namespace frontend\components;
 
 use common\models\City;
@@ -7,16 +8,20 @@ use Yii;
 use yii\base\Component;
 
 /**
- * PlacesComponent is the model behind the contact form.
+ * This is the model class for table "places".
+ *
+ * @property City $city
  */
-class PlacesComponent extends Component
+class CityDetectorComponent extends Component
 {
     public $city;
 
+    /**
+     *
+     */
     public function init() {
         parent::init();
 
-        // Город
         $city_id = Yii::$app->session->get('city_id');
         if ($city_id) {
             $this->city = City::findOne($city_id);

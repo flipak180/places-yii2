@@ -10,7 +10,7 @@ use yii\rest\ActiveController;
  */
 class PlaceController extends ActiveController
 {
-    public $modelClass = 'api\modules\v1\models\Place';
+    public $modelClass = 'api\modules\v1\models\ApiPlace';
 }
 
 

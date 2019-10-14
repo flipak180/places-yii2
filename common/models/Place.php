@@ -7,6 +7,7 @@ use himiklab\thumbnail\FileNotFoundException;
 use Yii;
 use yii\base\InvalidConfigException;
 use yii\behaviors\TimestampBehavior;
+use yii\helpers\ArrayHelper;
 use yii\web\UploadedFile;
 
 // Расчет расстояния
@@ -59,6 +60,7 @@ use yii\web\UploadedFile;
  * @property string $statusName
  * @property array $statusArr
  * @property string $mainImage
+ * @property PlaceReview[] $activeReviews
  */
 class Place extends \yii\db\ActiveRecord
 {
@@ -139,7 +141,7 @@ class Place extends \yii\db\ActiveRecord
         ];
     }
 
-	/**
+    /**
 	 * Relations
 	 */
 	public function getUser()
@@ -175,6 +177,11 @@ class Place extends \yii\db\ActiveRecord
     public function getReviews()
     {
         return $this->hasMany(PlaceReview::className(), ['place_id' => 'id']);
+    }
+
+    public function getActiveReviews()
+    {
+        return $this->hasMany(PlaceReview::className(), ['place_id' => 'id'])->where(['status' => PlaceReview::STATUS_ACTIVE]);
     }
 
     public function getPlaceComforts()
@@ -230,7 +237,7 @@ class Place extends \yii\db\ActiveRecord
         if ($this->image) {
             return EasyThumbnailImage::thumbnailFileUrl(Yii::getAlias('@frontend_web').$this->image->path, 272, 250);
         } else {
-            return '/design/assets/uploads/place-1.jpg';
+            return '/design/uploads/place-1.jpg';
         }
     }
 
@@ -356,5 +363,12 @@ class Place extends \yii\db\ActiveRecord
             }
         }
         return true;
+    }
+
+    /**
+     * @return array
+     */
+    public function getMetroNames() {
+        return ArrayHelper::map($this->getMetro()->all(), 'id', 'name');
     }
 }

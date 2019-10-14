@@ -2,8 +2,8 @@
 
 namespace common\models;
 
-use Yii;
 use yii\behaviors\TimestampBehavior;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "cities".
@@ -89,5 +89,12 @@ class City extends \yii\db\ActiveRecord
                 $city->save(false);
             }
         }
+    }
+
+    /**
+     * @return array
+     */
+    public static function getList() {
+        return ArrayHelper::map(self::find()->all(), 'id', 'name');
     }
 }

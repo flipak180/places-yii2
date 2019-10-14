@@ -1,0 +1,6 @@
+.pagination > span {
+    display: none;
+}
+.pagination a span {
+    margin-right: 5px;
+}

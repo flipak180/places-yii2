@@ -27,7 +27,8 @@ class PlaceUrlRule extends BaseObject implements UrlRuleInterface
     public function parseRequest($manager, $request)
     {
         $pathParts = explode('/', $request->getPathInfo());
-        if (isset($pathParts[0]) and $city = City::findOne(['alias' => $pathParts[0]])) {
+        \Yii::info($pathParts);
+        if (isset($pathParts[0]) and $pathParts[0] and $city = City::findOne(['alias' => $pathParts[0]])) {
             if (isset($pathParts[1]) and $place = Place::findOne(['alias' => $pathParts[1]])) {
                 return ['places/view', ['id' => $place->id]];
             }

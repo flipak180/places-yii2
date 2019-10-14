@@ -38,16 +38,18 @@ class PlacesSearch extends Place
      *
      * @param array $params
      *
+     * @param null $city_id
      * @return ActiveDataProvider
      */
-    public function search($params)
+    public function search($params, $city_id = null)
     {
-        $query = Place::find()
-
+        $query = Place::find()->with(['city', 'image', 'images'])
             ->where(['in', 'status', [self::STATUS_ACTIVE, self::STATUS_CLOSE]]);
 
-        if (Yii::$app->places->city) {
-            $query->andWhere(['city_id' => Yii::$app->places->city->id]);
+        if ($city_id) {
+            $query->andWhere(['city_id' => $city_id]);
+        } elseif (Yii::$app->cityDetector->city) {
+            $query->andWhere(['city_id' => Yii::$app->cityDetector->city->id]);
         }
 
         // add conditions that should always apply here

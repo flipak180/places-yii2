@@ -1,12 +1,9 @@
 <?php
 
+use himiklab\thumbnail\EasyThumbnailImage;
+use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
-use yii\helpers\ArrayHelper;
-use himiklab\thumbnail\EasyThumbnailImage;
-use yii\grid\GridView;
-use yii\data\ArrayDataProvider;
-use common\models\User;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\Place */

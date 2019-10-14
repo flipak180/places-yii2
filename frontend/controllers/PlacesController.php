@@ -26,12 +26,13 @@ class PlacesController extends Controller
 
     /**
      * Lists all Place models.
+     * @param null $city_id
      * @return mixed
      */
-    public function actionIndex()
+    public function actionIndex($city_id = null)
     {
         $searchModel = new PlacesSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams, $city_id);
 
         return $this->render('index', [
             'searchModel' => $searchModel,
