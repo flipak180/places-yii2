@@ -1,18 +1,18 @@
 <?php
-namespace frontend\models;
+namespace frontend\models\forms;
 
+use common\models\User;
 use Yii;
 use yii\base\Model;
-use common\models\User;
 
 /**
  * Login form
  */
 class LoginForm extends Model
 {
-    public $username;
+    public $email;
     public $password;
-    public $rememberMe = true;
+    public $rules;
 
     private $_user;
 
@@ -23,11 +23,9 @@ class LoginForm extends Model
     public function rules()
     {
         return [
-            // username and password are both required
-            [['username', 'password'], 'required'],
-            // rememberMe must be a boolean value
-            ['rememberMe', 'boolean'],
-            // password is validated by validatePassword()
+            [['email', 'password'], 'required'],
+            [['email'], 'email'],
+            ['rules', 'boolean'],
             ['password', 'validatePassword'],
         ];
     }
@@ -35,9 +33,9 @@ class LoginForm extends Model
     public function attributeLabels()
     {
         return [
-            'username' => 'Логин',
-            'password' => 'Пароль',
-            'rememberMe' => 'Запомнить меня',
+            'email' => 'Ваш E-mail',
+            'password' => 'Ваш пароль',
+            'rules' => 'Запомнить меня',
         ];
     }
 
@@ -59,7 +57,7 @@ class LoginForm extends Model
     }
 
     /**
-     * Logs in a user using the provided username and password.
+     * Logs in a user using the provided email and password.
      *
      * @return bool whether the user is logged in successfully
      */
@@ -68,19 +66,19 @@ class LoginForm extends Model
         if ($this->validate()) {
             return Yii::$app->user->login($this->getUser(), $this->rememberMe ? 3600 * 24 * 30 : 0);
         }
-        
+
         return false;
     }
 
     /**
-     * Finds user by [[username]]
+     * Finds user by [[email]]
      *
      * @return User|null
      */
     protected function getUser()
     {
         if ($this->_user === null) {
-            $this->_user = User::findBackendUser($this->username);
+            $this->_user = User::findFrontendUser($this->email);
         }
 
         return $this->_user;

@@ -12,6 +12,15 @@ return [
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'controllerNamespace' => 'frontend\controllers',
+//    'container' => [
+//        'definitions' => [
+//            yii\widgets\ActiveForm::classname() => [
+//                'fieldClass' => 'frontend\components\CustomFormField',
+//                // 'errorCssClass' => 'form__item_error',
+//                // 'successCssClass' => 'form__item_success',
+//            ],
+//        ],
+//    ],
     'components' => [
         'cityDetector' => [
             'class' => 'frontend\components\CityDetectorComponent',
