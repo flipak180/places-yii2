@@ -28,17 +28,11 @@ $loginForm = new LoginForm();
         //'enableAjaxValidation' => true,
         'action' => Url::toRoute(['/site/login']),
     ]); ?>
-        <div class="form-row">
-            <?= $form->field($loginForm, 'email')->textInput(['placeholder' => $loginForm->getAttributeLabel('email')])->label(false) ?>
-        </div>
-        <div class="form-row">
-            <?= $form->field($loginForm, 'password')->passwordInput(['placeholder' => $loginForm->getAttributeLabel('password')])->label(false) ?>
-        </div>
-        <div class="form-row checkbox-row">
-            <?= $form->field($loginForm, 'rules')->checkbox([
-                'label' => '<span>Я соглашаюсь с <a href="">пользовательским соглашением</a></span>'
-            ])->label(false) ?>
-        </div>
+        <?= $form->field($loginForm, 'email')->textInput(['placeholder' => $loginForm->getAttributeLabel('email')])->label(false) ?>
+        <?= $form->field($loginForm, 'password')->passwordInput(['placeholder' => $loginForm->getAttributeLabel('password')])->label(false) ?>
+        <?= $form->field($loginForm, 'rules', ['options' => ['class' => 'form-group checkbox-row']])->checkbox([
+            'label' => '<span>Я соглашаюсь с <a href="">пользовательским соглашением</a></span>'
+        ])->label(false) ?>
         <button class="btn btn-warning btn-upper">Войти</button>
         <a class="btn btn-default btn-upper popup-link" href="#forget-modal">Забыли пароль?</a>
     <?php ActiveForm::end(); ?>
