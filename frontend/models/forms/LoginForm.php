@@ -23,7 +23,7 @@ class LoginForm extends Model
     public function rules()
     {
         return [
-            [['email', 'password'], 'required'],
+            [['email', 'password', 'rules'], 'required'],
             [['email'], 'email'],
             ['rules', 'boolean'],
             ['password', 'validatePassword'],
@@ -64,7 +64,7 @@ class LoginForm extends Model
     public function login()
     {
         if ($this->validate()) {
-            return Yii::$app->user->login($this->getUser(), $this->rememberMe ? 3600 * 24 * 30 : 0);
+            return Yii::$app->user->login($this->getUser());
         }
 
         return false;

@@ -2,6 +2,8 @@
 
 /* @var $this yii\web\View */
 
+use yii\helpers\Url;
+
 ?>
 
 <header class="header">
@@ -23,7 +25,7 @@
                     <svg width="20" height="19" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18.5 10l.345.362.38-.362-.38-.362L18.5 10zM12 1h.5V.5H12V1zM1 1V.5H.5V1H1zm0 17H.5v.5H1V18zm11 0v.5h.5V18H12zm3.167-4.138l3.678-3.5-.69-.724-3.678 3.5.69.724zm3.678-4.224l-3.678-3.5-.69.724 3.678 3.5.69-.724zM18.5 9.5h-12v1h12v-1zm-6-4V1h-1v4.5h1zm-.5-5H1v1h11v-1zM.5 1v17h1V1h-1zM1 18.5h11v-1H1v1zm11.5-.5v-3.5h-1V18h1z" fill="#000"/></svg>
                 </a>
             <?php else: ?>
-                <a class="btn btn-default popup-link" href="#login-modal">
+                <a class="btn btn-default" href="<?= Url::to(['site/logout']) ?>">
                     <span>Выйти</span>
                     <svg width="20" height="19" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18.5 10l.345.362.38-.362-.38-.362L18.5 10zM12 1h.5V.5H12V1zM1 1V.5H.5V1H1zm0 17H.5v.5H1V18zm11 0v.5h.5V18H12zm3.167-4.138l3.678-3.5-.69-.724-3.678 3.5.69.724zm3.678-4.224l-3.678-3.5-.69.724 3.678 3.5.69-.724zM18.5 9.5h-12v1h12v-1zm-6-4V1h-1v4.5h1zm-.5-5H1v1h11v-1zM.5 1v17h1V1h-1zM1 18.5h11v-1H1v1zm11.5-.5v-3.5h-1V18h1z" fill="#000"/></svg>
                 </a>

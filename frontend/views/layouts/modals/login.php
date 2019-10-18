@@ -3,6 +3,7 @@
 /* @var $this yii\web\View */
 
 use frontend\models\forms\LoginForm;
+use yii\authclient\widgets\AuthChoice;
 use yii\helpers\Url;
 use yii\widgets\ActiveForm;
 
@@ -16,22 +17,27 @@ $loginForm = new LoginForm();
     <h3>Вход</h3>
     <hr>
     <p>Через соцсети <small>(рекомендуем для новых покупателей)</small></p>
-    <div class="social-links">
-        <div>ВКонтакте</div>
-        <div>Facebook</div>
-        <div>Google</div>
-        <div>Почта Mail.Ru</div>
-    </div>
+    <?php $authAuthChoice = AuthChoice::begin([
+        'baseAuthUrl' => ['site/login-oauth'],
+        'popupMode' => false,
+    ]); ?>
+        <div class="social-links">
+            <?php foreach ($authAuthChoice->getClients() as $client): ?>
+                <div><?= $authAuthChoice->clientLink($client) ?></div>
+            <?php endforeach; ?>
+        </div>
+    <?php AuthChoice::end(); ?>
     <hr>
     <p>С помощью аккаунта<a class="pull-right popup-link" href="#signup-modal">Создать аккаунт</a></p>
     <?php $form = ActiveForm::begin([
         //'enableAjaxValidation' => true,
         'action' => Url::toRoute(['/site/login']),
+        'enableAjaxValidation' => true,
     ]); ?>
-        <?= $form->field($loginForm, 'email')->textInput(['placeholder' => $loginForm->getAttributeLabel('email')])->label(false) ?>
-        <?= $form->field($loginForm, 'password')->passwordInput(['placeholder' => $loginForm->getAttributeLabel('password')])->label(false) ?>
+        <?= $form->field($loginForm, 'email')->textInput(['placeholder' => $loginForm->getAttributeLabel('email'), 'required' => 'required'])->label(false) ?>
+        <?= $form->field($loginForm, 'password')->passwordInput(['placeholder' => $loginForm->getAttributeLabel('password'), 'required' => 'required'])->label(false) ?>
         <?= $form->field($loginForm, 'rules', ['options' => ['class' => 'form-group checkbox-row']])->checkbox([
-            'label' => '<span>Я соглашаюсь с <a href="">пользовательским соглашением</a></span>'
+            'label' => '<span>Я соглашаюсь с <a href="">пользовательским соглашением</a></span>', 'required' => 'required'
         ])->label(false) ?>
         <button class="btn btn-warning btn-upper">Войти</button>
         <a class="btn btn-default btn-upper popup-link" href="#forget-modal">Забыли пароль?</a>

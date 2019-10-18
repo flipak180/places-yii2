@@ -1,9 +1,9 @@
 <?php
 namespace frontend\components;
 
+use common\models\User;
 use Yii;
 use yii\authclient\ClientInterface;
-use common\models\User;
 
 /**
  * AuthHandler handles successful authentication via Yii auth component
@@ -28,10 +28,8 @@ class AuthHandler
             case 'vkontakte':
                 $email = strtolower($attrs['email']);
                 break;
-            case 'facebook':
-                $email = $attrs['email'];
-                break;
             case 'twitter':
+            case 'facebook':
                 $email = $attrs['email'];
                 break;
             case 'yandex':
@@ -44,8 +42,7 @@ class AuthHandler
                 break;
         }
         if ($email) {
-            $user = User::findFrontendUser($email);
-            if ($user) {
+            if ($user = User::findFrontendUser($email)) {
                 return Yii::$app->user->login($user);
             } else {
                 Yii::$app->session->setFlash('error', 'Пользователь с таким Email не найден. Зарегистрируйтесь.');
@@ -66,11 +63,8 @@ class AuthHandler
                 $email = strtolower($attrs['email']);
                 $name = $attrs['last_name'].' '.$attrs['first_name'];
                 break;
-            case 'facebook':
-                $email = $attrs['email'];
-                $name = $attrs['name'];
-                break;
             case 'twitter':
+            case 'facebook':
                 $email = $attrs['email'];
                 $name = $attrs['name'];
                 break;
@@ -91,7 +85,7 @@ class AuthHandler
             $user->name = $name;
             $user->role = User::ROLE_USER;
             $user->status = User::STATUS_INACTIVE;
-			// TODO добавить аватарку, тип соц. сети и id в ней
+			// todo: добавить аватарку, тип соц. сети и id в ней
             $password = Yii::$app->security->generateRandomString(8);
             $user->setPassword($password);
             $user->generateAuthKey();
