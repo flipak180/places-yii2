@@ -4,7 +4,10 @@
 
 ?>
 
-<div class="modal xl" id="reviews-modal"><a class="close" href=""><svg width="42" height="42" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M31.113 10.607L10.607 31.113m19.799 0L9.9 10.607" stroke="gray" stroke-width="2"/></svg></a>
+<div class="modal xl" id="reviews-modal">
+    <a class="close" href="">
+        <svg width="42" height="42" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M31.113 10.607L10.607 31.113m19.799 0L9.9 10.607" stroke="gray" stroke-width="2"/></svg>
+    </a>
     <h3>Оставить отзыв</h3>
     <form action="" method="POST">
         <div class="rate-block">

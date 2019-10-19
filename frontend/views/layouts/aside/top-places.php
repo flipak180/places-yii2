@@ -2,7 +2,7 @@
 
 /* @var $this yii\web\View */
 
-use common\models\Place;
+use frontend\models\PlacesSearch;
 
 ?>
 
@@ -12,7 +12,7 @@ use common\models\Place;
         <p>Кальянные Санкт-Петербурга</p>
     </div>
     <div class="body">
-        <?php foreach (Place::getBestList(10) as $model): ?>
+        <?php foreach (PlacesSearch::getTopItems(10) as $model): ?>
             <a class="item" href="<?= $model->link ?>">
                 <span><?= $model->name ?></span>
                 <small><?= $model->address ?></small>

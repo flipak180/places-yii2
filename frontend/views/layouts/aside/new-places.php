@@ -2,7 +2,7 @@
 
 /* @var $this yii\web\View */
 
-use common\models\Place;
+use frontend\models\PlacesSearch;
 
 ?>
 
@@ -11,7 +11,7 @@ use common\models\Place;
         <h3>Новые заведения</h3>
     </div>
     <div class="body">
-        <?php foreach (Place::getNewList(3) as $model): ?>
+        <?php foreach (PlacesSearch::getNewItems(3) as $model): ?>
             <div class="item">
                 <a href="<?= $model->link ?>">
                     <img class="responsive" src="<?= $model->mainImage ?>" alt="<?= $model->name ?>">

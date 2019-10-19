@@ -46,9 +46,9 @@ class PlacesSearch extends Place
      * @param null $city_id
      * @return ActiveDataProvider
      */
-    public function search($params, $city_id = null)
+    public function search($params = [], $city_id = null)
     {
-        $query = Place::find()->with(['city', 'image', 'images', 'likes'])
+        $query = self::find()->with(['city', 'image', 'images', 'likes', 'activeReviews'])
             ->where(['in', 'status', [self::STATUS_ACTIVE, self::STATUS_CLOSE]]);
 
         if ($city_id) {
@@ -137,6 +137,33 @@ class PlacesSearch extends Place
             ->andFilterWhere(['like', 'description', $this->description]);
 
         return $dataProvider;
+    }
+
+    /**
+     * @param int $limit
+     * @return array|\yii\db\ActiveRecord[]
+     */
+    public static function getTopItems($limit = 10)
+    {
+        return self::getDb()->cache(function () use ($limit) {
+            return self::find()->with(['city'])
+                ->where(['in', 'status', [self::STATUS_ACTIVE, self::STATUS_CLOSE]])
+                ->andWhere(['city_id' => Yii::$app->cityDetector->city->id])
+                ->limit($limit)->all();
+        }, 3600);
+    }
+
+    /**
+     * @param int $limit
+     * @return mixed
+     */
+    public static function getNewItems($limit = 10)
+    {
+        return self::getDb()->cache(function () use ($limit) {
+            return self::find()->with(['city'])
+                ->where(['city_id' => Yii::$app->cityDetector->city->id, 'status' => self::STATUS_ACTIVE])
+                ->orderBy('created_at desc')->limit($limit)->all();
+        }, 3600);
     }
 
     /**

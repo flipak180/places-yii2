@@ -2,7 +2,6 @@
 
 namespace common\models;
 
-use frontend\models\PlacesSearch;
 use himiklab\thumbnail\EasyThumbnailImage;
 use himiklab\thumbnail\FileNotFoundException;
 use Yii;
@@ -68,6 +67,7 @@ use yii\web\UploadedFile;
  * @property PlaceLike[] $likes
  * @property PlaceView|null $currentView
  * @property PlaceView[] $views
+ * @property Place[] $closest
  */
 class Place extends \yii\db\ActiveRecord
 {
@@ -257,25 +257,22 @@ class Place extends \yii\db\ActiveRecord
     }
 
     /**
-     * @param $limit
-     * @return array
-     */
-    public static function getBestList($limit = 10)
-    {
-        return (new PlacesSearch)->search([])->query->limit($limit)->all();
-    }
-
-    /**
      * @param int $limit
-     * @return mixed
+     * @return array|\yii\db\ActiveRecord[]
      */
-    public static function getNewList($limit = 10)
-    {
-        return self::getDb()->cache(function () use ($limit) {
-            return Place::find()
-                ->where(['city_id' => Yii::$app->cityDetector->city->id, 'status' => self::STATUS_ACTIVE])
-                ->orderBy('created_at desc')->limit($limit)->all();
-        }, 3600);
+    public function getClosest($limit = 3) {
+        $query = self::find();
+        $query->select(['*', '111.045 * DEGREES(ACOS(COS(RADIANS('.$this->latitude.'))
+         * COS(RADIANS(latitude))
+         * COS(RADIANS(longitude) - RADIANS('.$this->longitude.'))
+         + SIN(RADIANS('.$this->latitude.'))
+         * SIN(RADIANS(latitude))))
+         AS distance_in_km']);
+        $query->limit = $limit;
+        $query->where(['!=', 'id', $this->id]);
+        $query->andWhere(['!=', 'status', self::STATUS_ACTIVE]);
+        $query->orderBy('distance_in_km ASC');
+        return $query->all();
     }
 
     /**
