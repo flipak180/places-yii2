@@ -18,9 +18,5 @@
 </div>
 <div class="bottom">
     <span>Отзывов: 203</span>
-    <div class="votes">
-        <a class="vote-down" href="#"></a>
-        <span>+567</span>
-        <a class="vote-up" href="#"></a>
-    </div>
+    <?= $this->render('blocks/votes', ['model' => $model]) ?>
 </div>

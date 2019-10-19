@@ -35,10 +35,6 @@
             <?= $model->total_views ? $model->total_views : 0 ?>
         </span>
         <span>Отзывов: <?= count($model->activeReviews) ?></span>
-        <div class="votes">
-            <a class="vote-down" href="#"></a>
-            <span>+<?= $model->total_likes ? $model->total_likes : 0 ?></span>
-            <a class="vote-up" href="#"></a>
-        </div>
+        <?= $this->render('votes', ['model' => $model]) ?>
     </div>
 </div>

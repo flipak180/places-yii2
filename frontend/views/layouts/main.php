@@ -27,7 +27,9 @@ AppAsset::register($this);
 <?= $this->render('blocks/topbar') ?>
 <main>
     <div class="container">
-        <?= $this->render('blocks/top-banner') ?>
+        <?php if (Yii::$app->markup->showBanner): ?>
+            <?= $this->render('blocks/top-banner') ?>
+        <?php endif ?>
         <div class="aside-cont <?= Yii::$app->markup->asidePosition ?>">
             <aside>
                 <button class="btn btn-default toggle-aside"><svg width="20" height="16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 15a1 1 0 0 1 1-1h18a1 1 0 1 1 0 2H1a1 1 0 0 1-1-1zM0 1a1 1 0 0 1 1-1h18a1 1 0 1 1 0 2H1a1 1 0 0 1-1-1zM0 8a1 1 0 0 1 1-1h18a1 1 0 1 1 0 2H1a1 1 0 0 1-1-1z" fill="#000"/></svg></button>

@@ -64,6 +64,8 @@ use yii\web\UploadedFile;
  * @property string $mainImage
  * @property PlaceReview[] $activeReviews
  * @property string $link
+ * @property PlaceLike|null $currentLike
+ * @property PlaceLike[] $likes
  */
 class Place extends \yii\db\ActiveRecord
 {
@@ -215,6 +217,18 @@ class Place extends \yii\db\ActiveRecord
     public function getSimilar()
     {
         return $this->hasMany(Place::className(), ['id' => 'similar_id'])->via('placeSimilar');
+    }
+
+    public function getCurrentLike()
+    {
+        return $this->hasOne(PlaceLike::className(), ['place_id' => 'id'])
+            ->andWhere(['ip' => Yii::$app->request->userIP])
+            ->orFilterWhere(['user_id' => Yii::$app->user->id]);
+    }
+
+    public function getLikes()
+    {
+        return $this->hasMany(PlaceLike::className(), ['place_id' => 'id']);
     }
 
     public function getOpeningHours()
@@ -405,5 +419,27 @@ class Place extends \yii\db\ActiveRecord
      */
     public function getMetroNames() {
         return ArrayHelper::map($this->getMetro()->all(), 'id', 'name');
+    }
+
+    /**
+     * @return bool
+     */
+    public function like() {
+        if (!$this->currentLike) {
+            return PlaceLike::create($this->id);
+        }
+        return false;
+    }
+
+    /**
+     * @return bool|false|int
+     * @throws \Throwable
+     * @throws \yii\db\StaleObjectException
+     */
+    public function dislike() {
+        if ($this->currentLike) {
+            return $this->currentLike->delete();
+        }
+        return false;
     }
 }

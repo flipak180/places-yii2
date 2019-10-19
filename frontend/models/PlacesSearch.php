@@ -48,7 +48,7 @@ class PlacesSearch extends Place
      */
     public function search($params, $city_id = null)
     {
-        $query = Place::find()->with(['city', 'image', 'images'])
+        $query = Place::find()->with(['city', 'image', 'images', 'likes'])
             ->where(['in', 'status', [self::STATUS_ACTIVE, self::STATUS_CLOSE]]);
 
         if ($city_id) {

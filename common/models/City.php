@@ -19,6 +19,8 @@ use yii\helpers\ArrayHelper;
  * @property string $longitude
  * @property int $created_at
  * @property int $updated_at
+ *
+ * @property string $coordinates
  */
 class City extends \yii\db\ActiveRecord
 {
@@ -52,7 +54,7 @@ class City extends \yii\db\ActiveRecord
     }
 
     /**
-     * Relations
+     * @return string
      */
     public function getCoordinates()
     {

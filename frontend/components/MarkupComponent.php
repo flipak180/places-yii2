@@ -13,6 +13,7 @@ class MarkupComponent extends Component
     public $asideBlocks = ['top-places', 'news', 'articles'];
     public $asidePosition = 'left';
     public $showFilters = false;
+    public $showBanner = false;
 
     /**
      *
@@ -25,6 +26,7 @@ class MarkupComponent extends Component
                 $this->asideBlocks = ['top-places', 'news', 'articles'];
                 $this->asidePosition = 'left';
                 $this->showFilters = true;
+                $this->showBanner = true;
                 break;
             default:
                 $this->asideBlocks = ['new-places', 'top-places', 'news'];
