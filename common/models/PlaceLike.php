@@ -45,13 +45,16 @@ class PlaceLike extends \yii\db\ActiveRecord
     }
 
     /**
-     * Relations
+     * @return \yii\db\ActiveQuery
      */
     public function getPlace()
     {
         return $this->hasOne(Place::className(), ['id' => 'place_id']);
     }
 
+    /**
+     * @return \yii\db\ActiveQuery
+     */
     public function getUser()
     {
         return $this->hasOne(User::className(), ['id' => 'user_id']);
@@ -77,10 +80,10 @@ class PlaceLike extends \yii\db\ActiveRecord
      * @return bool
      */
     public static function create($placeId) {
-        $like = new self();
-        $like->place_id = $placeId;
-        $like->ip = Yii::$app->request->userIP;
-        $like->user_id = Yii::$app->user->id;
-        return $like->save();
+        $model = new self();
+        $model->place_id = $placeId;
+        $model->ip = Yii::$app->request->userIP;
+        $model->user_id = Yii::$app->user->id;
+        return $model->save();
     }
 }

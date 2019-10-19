@@ -66,6 +66,8 @@ use yii\web\UploadedFile;
  * @property string $link
  * @property PlaceLike|null $currentLike
  * @property PlaceLike[] $likes
+ * @property PlaceView|null $currentView
+ * @property PlaceView[] $views
  */
 class Place extends \yii\db\ActiveRecord
 {
@@ -229,6 +231,18 @@ class Place extends \yii\db\ActiveRecord
     public function getLikes()
     {
         return $this->hasMany(PlaceLike::className(), ['place_id' => 'id']);
+    }
+
+    public function getCurrentView()
+    {
+        return $this->hasOne(PlaceView::className(), ['place_id' => 'id'])
+            ->andWhere(['ip' => Yii::$app->request->userIP])
+            ->orFilterWhere(['user_id' => Yii::$app->user->id]);
+    }
+
+    public function getViews()
+    {
+        return $this->hasMany(PlaceView::className(), ['place_id' => 'id']);
     }
 
     public function getOpeningHours()
@@ -439,6 +453,16 @@ class Place extends \yii\db\ActiveRecord
     public function dislike() {
         if ($this->currentLike) {
             return $this->currentLike->delete();
+        }
+        return false;
+    }
+
+    /**
+     * @return bool
+     */
+    public function view() {
+        if (!$this->currentView) {
+            return PlaceView::create($this->id);
         }
         return false;
     }

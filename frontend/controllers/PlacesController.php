@@ -58,8 +58,10 @@ class PlacesController extends Controller
      */
     public function actionView($id)
     {
+        $model = $this->findModel($id);
+        $model->view();
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $model,
         ]);
     }
 
@@ -68,10 +70,9 @@ class PlacesController extends Controller
      * @return Response
      */
     public function actionLike($id) {
-        if ($place = Place::findOne($id)) {
-            $place->like();
+        if ($model = Place::findOne($id)) {
+            $model->like();
         }
-
         return $this->redirect(Yii::$app->request->referrer);
     }
 
@@ -83,7 +84,6 @@ class PlacesController extends Controller
         if ($place = Place::findOne($id)) {
             $place->dislike();
         }
-
         return $this->redirect(Yii::$app->request->referrer);
     }
 

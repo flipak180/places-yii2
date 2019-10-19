@@ -32,7 +32,7 @@
         <?php endif ?>
         <span>
             <svg width="15" height="9" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M.046 3.626L0 4.197a8.744 8.744 0 0014.895 1.177l.046-.571A8.745 8.745 0 00.046 3.626zm7.316 4.255a3.393 3.393 0 113.293-1.831 3.4 3.4 0 01-3.316 1.837l.023-.006z" fill="#5B114E"/><path d="M7.613 6.196a1.696 1.696 0 100-3.392 1.696 1.696 0 000 3.392z" fill="#5B114E"/></svg>
-            <?= $model->total_views ? $model->total_views : 0 ?>
+            <?= count($model->views) ?>
         </span>
         <span>Отзывов: <?= count($model->activeReviews) ?></span>
         <?= $this->render('votes', ['model' => $model]) ?>
