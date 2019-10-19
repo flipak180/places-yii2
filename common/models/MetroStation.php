@@ -2,7 +2,6 @@
 
 namespace common\models;
 
-use Yii;
 use yii\behaviors\TimestampBehavior;
 
 /**
@@ -48,13 +47,16 @@ class MetroStation extends \yii\db\ActiveRecord
     }
 
     /**
-     * Relations
+     * @return \yii\db\ActiveQuery
      */
     public function getCity()
     {
         return $this->hasOne(City::className(), ['id' => 'city_id']);
     }
 
+    /**
+     * @return \yii\db\ActiveQuery
+     */
     public function getDistrict()
     {
         return $this->hasOne(District::className(), ['id' => 'district_id']);
@@ -75,5 +77,17 @@ class MetroStation extends \yii\db\ActiveRecord
             'created_at' => 'Дата добавления',
             'updated_at' => 'Дата обновления',
         ];
+    }
+
+    /**
+     * @param null $cityId
+     * @return array|\yii\db\ActiveRecord[]
+     */
+    public static function getList($cityId = null) {
+        $query = self::find();
+        if ($cityId) {
+            $query->where(['city_id' => $cityId]);
+        }
+        return $query->orderby(['name' => SORT_ASC])->all();
     }
 }

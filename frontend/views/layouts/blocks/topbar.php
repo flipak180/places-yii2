@@ -1,6 +1,5 @@
 <?php
 
-use common\models\City;
 use frontend\models\forms\HeaderSearchForm;
 use yii\widgets\ActiveForm;
 
@@ -16,11 +15,10 @@ use yii\widgets\ActiveForm;
         <?php $form = ActiveForm::begin([
             'options' => ['class' => 'search-form']
         ]); ?>
-        <?= $form->field($headerSearchForm, 'city')->dropDownList(City::getList(), ['class' => 'select'])->label(false) ?>
-        <input type="text" placeholder="Введите название кальянной">
-        <button type="submit">
-            <svg width="22" height="22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21 21l-6.115-6.114m0 0c3.172-3.171 3.172-8.332 0-11.504A8.082 8.082 0 0 0 9.134 1a8.081 8.081 0 0 0-5.752 2.383A8.075 8.075 0 0 0 1 9.134c0 2.173.846 4.215 2.382 5.752a8.081 8.081 0 0 0 5.752 2.382 8.08 8.08 0 0 0 5.751-2.382z" stroke="#5B114E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </button>
+            <input type="text" placeholder="Введите название кальянной">
+            <button type="submit">
+                <svg width="22" height="22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21 21l-6.115-6.114m0 0c3.172-3.171 3.172-8.332 0-11.504A8.082 8.082 0 0 0 9.134 1a8.081 8.081 0 0 0-5.752 2.383A8.075 8.075 0 0 0 1 9.134c0 2.173.846 4.215 2.382 5.752a8.081 8.081 0 0 0 5.752 2.382 8.08 8.08 0 0 0 5.751-2.382z" stroke="#5B114E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
         <?php ActiveForm::end(); ?>
         <a class="favorites popup-link" href="#reviews-modal">
             <svg width="16" height="22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 3a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v17l-5.838-4.17a2 2 0 0 0-2.324 0L1 20V3z" stroke="#FFCD18" stroke-width="2"/></svg>

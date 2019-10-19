@@ -2,7 +2,6 @@
 
 namespace common\models;
 
-use Yii;
 use yii\behaviors\TimestampBehavior;
 
 /**
@@ -54,5 +53,13 @@ class Comfort extends \yii\db\ActiveRecord
             'created_at' => 'Дата добавления',
             'updated_at' => 'Дата обновления',
         ];
+    }
+
+    /**
+     * @return array|\yii\db\ActiveRecord[]
+     */
+    public static function getList() {
+        $query = self::find();
+        return $query->orderby(['name' => SORT_ASC])->all();
     }
 }

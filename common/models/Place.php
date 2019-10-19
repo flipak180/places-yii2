@@ -2,12 +2,14 @@
 
 namespace common\models;
 
+use frontend\models\PlacesSearch;
 use himiklab\thumbnail\EasyThumbnailImage;
 use himiklab\thumbnail\FileNotFoundException;
 use Yii;
 use yii\base\InvalidConfigException;
 use yii\behaviors\TimestampBehavior;
 use yii\helpers\ArrayHelper;
+use yii\helpers\Url;
 use yii\web\UploadedFile;
 
 // Расчет расстояния
@@ -61,6 +63,7 @@ use yii\web\UploadedFile;
  * @property array $statusArr
  * @property string $mainImage
  * @property PlaceReview[] $activeReviews
+ * @property string $link
  */
 class Place extends \yii\db\ActiveRecord
 {
@@ -226,6 +229,35 @@ class Place extends \yii\db\ActiveRecord
     }
 
     /**
+     * @param $limit
+     * @return array
+     */
+    public static function getBestList($limit = 10)
+    {
+        return (new PlacesSearch)->search([])->query->limit($limit)->all();
+    }
+
+    /**
+     * @param int $limit
+     * @return mixed
+     */
+    public static function getNewList($limit = 10)
+    {
+        return self::getDb()->cache(function () use ($limit) {
+            return Place::find()
+                ->where(['city_id' => Yii::$app->cityDetector->city->id, 'status' => self::STATUS_ACTIVE])
+                ->orderBy('created_at desc')->limit($limit)->all();
+        }, 3600);
+    }
+
+    /**
+     * @return string
+     */
+    public function getLink() {
+        return Url::to([$this->city->alias.'/'.$this->alias]);
+    }
+
+    /**
      * @param int $width
      * @param int $height
      * @return string
@@ -351,6 +383,9 @@ class Place extends \yii\db\ActiveRecord
     //     return true;
     // }
 
+    /**
+     * @return bool
+     */
     public function saveSimilar()
     {
         if (is_array($this->similar_field)) {

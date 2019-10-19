@@ -2,24 +2,29 @@
 
 namespace frontend\models;
 
+use common\models\MetroStation;
 use common\models\Place;
+use common\models\PlaceComfort;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
+use yii\db\Expression;
 
 /**
  * PlacesSearch represents the model behind the search form of `common\models\Place`.
  */
 class PlacesSearch extends Place
 {
+    public $metro_id;
+
     /**
      * {@inheritdoc}
      */
     public function rules()
     {
         return [
-            [['id', 'user_id', 'city_id', 'district_id', 'network_id', 'total_views', 'total_likes', 'status', 'created_at', 'updated_at'], 'integer'],
-            [['name', 'alias', 'address', 'phone', 'website', 'introtext', 'description'], 'safe'],
+            [['id', 'user_id', 'city_id', 'district_id', 'network_id', 'total_views', 'total_likes', 'status', 'created_at', 'updated_at', 'metro_id'], 'integer'],
+            [['name', 'alias', 'address', 'phone', 'website', 'introtext', 'description', 'comforts_field', 'metro_field'], 'safe'],
             [['rating', 'latitude', 'longitude'], 'number'],
         ];
     }
@@ -85,6 +90,25 @@ class PlacesSearch extends Place
             // uncomment the following line if you do not want to return any records when validation fails
             // $query->where('0=1');
             return $dataProvider;
+        }
+
+        // Фильтр по удобствам
+        if ($this->comforts_field and is_array($this->comforts_field)) {
+            $sub_query = PlaceComfort::find();
+            $sub_query->select('place_id');
+            $sub_query->where(['in', 'comfort_id', $this->comforts_field]);
+            $sub_query->groupBy(['place_id']);
+            $sub_query->having('count(distinct `comfort_id`) >= '.count($this->comforts_field));
+            $query->join('INNER JOIN', '('.$sub_query->createCommand()->getRawSql().') pc', 'places.id = pc.place_id');
+        }
+
+        // Фильтр по метро
+        if ($this->metro_id and $station = MetroStation::findOne($this->metro_id)) {
+            $query->addSelect([new Expression("((ACOS(SIN({$station->latitude} * PI() / 180) * SIN(`places`.latitude * PI() / 180) + 
+                COS({$station->latitude} * PI() / 180) * COS(`places`.latitude * PI() / 180) * COS(({$station->longitude} - `places`.longitude) * 
+                PI() / 180)) * 180 / PI()) * 60 * 1.1515) AS distance")]);
+            $query->having("distance <= '1'");
+            $query->orderBy("distance");
         }
 
         // grid filtering conditions

@@ -46,7 +46,7 @@ $this->params['breadcrumbs'][] = $this->title;
     ]
 ]); ?>
 
-<div class="places">
+<!--<div class="places">
     <div class="top">
         <span>Найдено: 860 кальянных</span>
         <div class="sort">
@@ -92,7 +92,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <svg width="6" height="10" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5.213 5.213l.354-.353.353.353-.353.354-.354-.354zM1.353.646L5.568 4.86l-.707.707L.646 1.353l.708-.707zm4.214 4.92L1.354 9.78l-.708-.707L4.86 4.86l.707.707z" fill="#000"/></svg>
         </a>
     </div>
-</div>
+</div>-->
 
 
 
