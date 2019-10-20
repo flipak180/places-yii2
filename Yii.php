@@ -27,7 +27,7 @@ abstract class BaseApplication extends yii\base\Application
  * Include only Web application related components here
  *
  * @property common\components\User $user The user component. This property is read-only. Extended component.
- * @property frontend\components\CityDetectorComponent $cityDetector The response component. This property is read-only. Extended component.
+ * @property frontend\components\CityComponent $city The response component. This property is read-only. Extended component.
  * @property frontend\components\MarkupComponent $markup The response component. This property is read-only. Extended component.
  */
 class WebApplication extends yii\web\Application

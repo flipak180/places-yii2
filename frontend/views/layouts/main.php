@@ -23,8 +23,9 @@ AppAsset::register($this);
 <body>
 <?php $this->beginBody() ?>
 
+<?= $this->render('blocks/header-top') ?>
 <?= $this->render('blocks/header') ?>
-<?= $this->render('blocks/topbar') ?>
+<?= $this->render('blocks/header-bottom') ?>
 <main>
     <div class="container">
         <?php if (Yii::$app->markup->showBanner): ?>

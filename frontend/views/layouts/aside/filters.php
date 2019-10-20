@@ -22,11 +22,11 @@ $model->load(Yii::$app->request->get());
 ]) ?>
     <div class="box main-filter">
         <div class="body">
-            <?= $form->field($model, 'district_id')->dropDownList(ArrayHelper::map(District::getList(Yii::$app->cityDetector->city->id), 'id', 'name'), [
+            <?= $form->field($model, 'district_id')->dropDownList(ArrayHelper::map(District::getList(Yii::$app->city->current->id), 'id', 'name'), [
                 'prompt' => 'Любой район',
                 'class' => 'chosen-select'
             ])->label(false) ?>
-            <?= $form->field($model, 'metro_id')->dropDownList(ArrayHelper::map(MetroStation::getList(Yii::$app->cityDetector->city->id), 'id', 'name'), [
+            <?= $form->field($model, 'metro_id')->dropDownList(ArrayHelper::map(MetroStation::getList(Yii::$app->city->current->id), 'id', 'name'), [
                 'prompt' => 'Любое метро',
                 'class' => 'chosen-select'
             ])->label(false) ?>

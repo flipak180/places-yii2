@@ -53,10 +53,10 @@
                 <label>Добавить фото</label>
                 <div class="files-list">
                     <div class="file-item">
-                        <div class="overlay"></div><a class="remove" href=""><svg width="25" height="25" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.066 6.066l12.132 12.132m0-12.132L6.066 18.198" stroke="#fff"/></svg></a><img class="responsive" src="/design/uploads/img-file.jpg">
+                        <div class="overlay"></div><a class="remove" href=""><svg width="25" height="25" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.066 6.066l12.132 12.132m0-12.132L6.066 18.198" stroke="#fff"/></svg></a><img class="responsive" src="/places-markup/dist/uploads/img-file.jpg">
                     </div>
                     <div class="file-item">
-                        <div class="overlay"></div><a class="remove" href=""><svg width="25" height="25" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.066 6.066l12.132 12.132m0-12.132L6.066 18.198" stroke="#fff"/></svg></a><img class="responsive" src="/design/uploads/img-file.jpg">
+                        <div class="overlay"></div><a class="remove" href=""><svg width="25" height="25" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.066 6.066l12.132 12.132m0-12.132L6.066 18.198" stroke="#fff"/></svg></a><img class="responsive" src="/places-markup/dist/uploads/img-file.jpg">
                     </div>
                     <div class="new-file"></div>
                 </div>

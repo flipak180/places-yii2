@@ -22,8 +22,8 @@ return [
 //        ],
 //    ],
     'components' => [
-        'cityDetector' => [
-            'class' => 'frontend\components\CityDetectorComponent',
+        'city' => [
+            'class' => 'frontend\components\CityComponent',
         ],
         'markup' => [
             'class' => 'frontend\components\MarkupComponent',

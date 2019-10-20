@@ -10,7 +10,7 @@
     <?php foreach ($model->activeReviews as $review): ?>
         <div class="item">
             <div class="author">
-                <img class="responsive" src="/design/img/no-avatar.png" alt="">
+                <img class="responsive" src="/places-markup/dist/img/no-avatar.png" alt="">
                 <h4>Роман</h4>
                 <p>Критик 1-го уровня</p>
             </div>

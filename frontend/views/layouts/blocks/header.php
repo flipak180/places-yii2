@@ -8,7 +8,7 @@ use yii\helpers\Url;
 
 <header class="header">
     <div class="container">
-        <a class="logo" href="/"><img src="/design/img/logo.png" srcset="img/logo@2x.png 2x" alt="Кальянные.рф"></a>
+        <a class="logo" href="/"><img src="/places-markup/dist/img/logo.png" srcset="img/logo@2x.png 2x" alt="Кальянные.рф"></a>
         <nav>
             <a href="/place-card.html">TOP10</a>
             <a href="/news-list.html">Резюме</a>
@@ -36,7 +36,7 @@ use yii\helpers\Url;
 
 <div class="sticky-header">
     <div class="container">
-        <a class="logo" href="/"><img src="/design/img/logo2.png" srcset="img/logo2@2x.png 2x" alt="Кальянные.рф"></a>
+        <a class="logo" href="/"><img src="/places-markup/dist/img/logo2.png" srcset="img/logo2@2x.png 2x" alt="Кальянные.рф"></a>
         <div class="menu">
             <svg width="20" height="16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 15a1 1 0 0 1 1-1h8a1 1 0 1 1 0 2H1a1 1 0 0 1-1-1zM0 1a1 1 0 0 1 1-1h18a1 1 0 1 1 0 2H1a1 1 0 0 1-1-1zM0 8a1 1 0 0 1 1-1h18a1 1 0 1 1 0 2H1a1 1 0 0 1-1-1z" fill="#fff"/></svg>
             <span>Меню</span>

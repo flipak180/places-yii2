@@ -53,8 +53,8 @@ class PlacesSearch extends Place
 
         if ($city_id) {
             $query->andWhere(['city_id' => $city_id]);
-        } elseif (Yii::$app->cityDetector->city) {
-            $query->andWhere(['city_id' => Yii::$app->cityDetector->city->id]);
+        } elseif (Yii::$app->city->current) {
+            $query->andWhere(['city_id' => Yii::$app->city->current->id]);
         }
 
         // add conditions that should always apply here
@@ -148,7 +148,7 @@ class PlacesSearch extends Place
         return self::getDb()->cache(function () use ($limit) {
             return self::find()->with(['city'])
                 ->where(['in', 'status', [self::STATUS_ACTIVE, self::STATUS_CLOSE]])
-                ->andWhere(['city_id' => Yii::$app->cityDetector->city->id])
+                ->andWhere(['city_id' => Yii::$app->city->current->id])
                 ->limit($limit)->all();
         }, 3600);
     }
@@ -161,7 +161,7 @@ class PlacesSearch extends Place
     {
         return self::getDb()->cache(function () use ($limit) {
             return self::find()->with(['city'])
-                ->where(['city_id' => Yii::$app->cityDetector->city->id, 'status' => self::STATUS_ACTIVE])
+                ->where(['city_id' => Yii::$app->city->current->id, 'status' => self::STATUS_ACTIVE])
                 ->orderBy('created_at desc')->limit($limit)->all();
         }, 3600);
     }

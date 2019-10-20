@@ -13,7 +13,7 @@ class HeaderSearchForm extends Model
 
     public function __construct($config = [])
     {
-        $this->city = Yii::$app->cityDetector->city->id;
+        $this->city = Yii::$app->city->current->id;
         parent::__construct($config);
     }
 
