@@ -1,35 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="49a126a6-94c7-4406-8a38-0d2526efd727" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/frontend/public_html/places-markup/src/html/core/header-top.pug" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/public_html/places-markup/src/scss/includes/header-top.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/views/layouts/blocks/header-top.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Yii.php" beforeDir="false" afterPath="$PROJECT_DIR$/Yii.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/assets/AppAsset.php" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/assets/AppAsset.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/components/CityDetectorComponent.php" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/components/CityComponent.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/config/main.php" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/config/main.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/models/PlacesSearch.php" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/models/PlacesSearch.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/models/forms/HeaderSearchForm.php" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/models/forms/HeaderSearchForm.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/public_html/places-markup/src/html/core/top-bar.pug" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public_html/places-markup/src/html/core/header-bottom.pug" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/public_html/places-markup/src/html/index.pug" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public_html/places-markup/src/html/index.pug" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/public_html/places-markup/src/html/news-card.pug" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public_html/places-markup/src/html/news-card.pug" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/public_html/places-markup/src/html/news-list.pug" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public_html/places-markup/src/html/news-list.pug" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/public_html/places-markup/src/html/place-card.pug" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public_html/places-markup/src/html/place-card.pug" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/public_html/places-markup/src/scss/includes/top-bar.scss" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public_html/places-markup/src/scss/includes/header-bottom.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/public_html/places-markup/src/scss/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public_html/places-markup/src/scss/style.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/views/layouts/aside/articles.php" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/views/layouts/aside/articles.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/views/layouts/aside/filters.php" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/views/layouts/aside/filters.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/views/layouts/aside/news.php" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/views/layouts/aside/news.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/views/layouts/blocks/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/views/layouts/blocks/header.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/views/layouts/blocks/top-banner.php" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/views/layouts/blocks/top-banner.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/views/layouts/blocks/topbar.php" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/views/layouts/blocks/header-bottom.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/views/layouts/main.php" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/views/layouts/main.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/views/layouts/modals/add-review.php" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/views/layouts/modals/add-review.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/views/places/blocks/reviews.php" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/views/places/blocks/reviews.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/views/places/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/views/places/index.php" afterDir="false" />
-    </list>
+    <list default="true" id="49a126a6-94c7-4406-8a38-0d2526efd727" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -333,7 +305,7 @@
       <workItem from="1571521833421" duration="3564000" />
       <workItem from="1571566259212" duration="1374000" />
       <workItem from="1571575910440" duration="4271000" />
-      <workItem from="1571597442114" duration="16000" />
+      <workItem from="1571597442114" duration="83000" />
     </task>
     <task id="LOCAL-00001" summary="Test">
       <created>1537216444646</created>
@@ -454,7 +426,21 @@
       <option name="project" value="LOCAL" />
       <updated>1571576031640</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="improves">
+      <created>1571597475666</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1571597475666</updated>
+    </task>
+    <task id="LOCAL-00019" summary="idea">
+      <created>1571597511635</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1571597511635</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TodoView">
@@ -495,7 +481,8 @@
     <MESSAGE value="place likes/dislikes" />
     <MESSAGE value="place views" />
     <MESSAGE value="improves" />
-    <option name="LAST_COMMIT_MESSAGE" value="improves" />
+    <MESSAGE value="idea" />
+    <option name="LAST_COMMIT_MESSAGE" value="idea" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
