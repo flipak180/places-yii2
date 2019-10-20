@@ -1,0 +1,512 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="49a126a6-94c7-4406-8a38-0d2526efd727" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/frontend/public_html/places-markup/src/html/core/header-top.pug" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/public_html/places-markup/src/scss/includes/header-top.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/views/layouts/blocks/header-top.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Yii.php" beforeDir="false" afterPath="$PROJECT_DIR$/Yii.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/assets/AppAsset.php" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/assets/AppAsset.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/components/CityDetectorComponent.php" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/components/CityComponent.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/config/main.php" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/config/main.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/models/PlacesSearch.php" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/models/PlacesSearch.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/models/forms/HeaderSearchForm.php" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/models/forms/HeaderSearchForm.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/public_html/places-markup/src/html/core/top-bar.pug" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public_html/places-markup/src/html/core/header-bottom.pug" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/public_html/places-markup/src/html/index.pug" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public_html/places-markup/src/html/index.pug" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/public_html/places-markup/src/html/news-card.pug" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public_html/places-markup/src/html/news-card.pug" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/public_html/places-markup/src/html/news-list.pug" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public_html/places-markup/src/html/news-list.pug" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/public_html/places-markup/src/html/place-card.pug" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public_html/places-markup/src/html/place-card.pug" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/public_html/places-markup/src/scss/includes/top-bar.scss" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public_html/places-markup/src/scss/includes/header-bottom.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/public_html/places-markup/src/scss/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public_html/places-markup/src/scss/style.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/views/layouts/aside/articles.php" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/views/layouts/aside/articles.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/views/layouts/aside/filters.php" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/views/layouts/aside/filters.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/views/layouts/aside/news.php" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/views/layouts/aside/news.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/views/layouts/blocks/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/views/layouts/blocks/header.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/views/layouts/blocks/top-banner.php" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/views/layouts/blocks/top-banner.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/views/layouts/blocks/topbar.php" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/views/layouts/blocks/header-bottom.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/views/layouts/main.php" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/views/layouts/main.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/views/layouts/modals/add-review.php" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/views/layouts/modals/add-review.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/views/places/blocks/reviews.php" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/views/places/blocks/reviews.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/views/places/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/views/places/index.php" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
+    <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
+    <execution>
+      <executable />
+    </execution>
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+        <option value="JavaScript File" />
+        <option value="Pug File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="ROOT_SYNC" value="SYNC" />
+  </component>
+  <component name="PhpServers">
+    <servers />
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration">
+    <include_path>
+      <path value="$PROJECT_DIR$/vendor/phpspec/php-diff" />
+      <path value="$PROJECT_DIR$/vendor/cebe/markdown" />
+      <path value="$PROJECT_DIR$/vendor/phpspec/prophecy" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-timer" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-file-iterator" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-token-stream" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-text-template" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/phpunit" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-code-coverage" />
+      <path value="$PROJECT_DIR$/vendor/yiisoft/yii2" />
+      <path value="$PROJECT_DIR$/vendor/yiisoft/yii2-faker" />
+      <path value="$PROJECT_DIR$/vendor/guzzlehttp/psr7" />
+      <path value="$PROJECT_DIR$/vendor/codeception/phpunit-wrapper" />
+      <path value="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer" />
+      <path value="$PROJECT_DIR$/vendor/yiisoft/yii2-bootstrap" />
+      <path value="$PROJECT_DIR$/vendor/yiisoft/yii2-debug" />
+      <path value="$PROJECT_DIR$/vendor/codeception/verify" />
+      <path value="$PROJECT_DIR$/vendor/yiisoft/yii2-composer" />
+      <path value="$PROJECT_DIR$/vendor/codeception/stub" />
+      <path value="$PROJECT_DIR$/vendor/yiisoft/yii2-swiftmailer" />
+      <path value="$PROJECT_DIR$/vendor/yiisoft/yii2-gii" />
+      <path value="$PROJECT_DIR$/vendor/codeception/base" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/lexer" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/instantiator" />
+      <path value="$PROJECT_DIR$/vendor/myclabs/deep-copy" />
+      <path value="$PROJECT_DIR$/vendor/phpdocumentor/reflection-docblock" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/global-state" />
+      <path value="$PROJECT_DIR$/vendor/phpdocumentor/reflection-common" />
+      <path value="$PROJECT_DIR$/vendor/phpdocumentor/type-resolver" />
+      <path value="$PROJECT_DIR$/vendor/bower-asset/typeahead.js" />
+      <path value="$PROJECT_DIR$/vendor/behat/gherkin" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/comparator" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/recursion-context" />
+      <path value="$PROJECT_DIR$/vendor/bower-asset/yii2-pjax" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/exporter" />
+      <path value="$PROJECT_DIR$/vendor/bower-asset/punycode" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/object-reflector" />
+      <path value="$PROJECT_DIR$/vendor/bower-asset/jquery" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/object-enumerator" />
+      <path value="$PROJECT_DIR$/vendor/bower-asset/bootstrap" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/code-unit-reverse-lookup" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/resource-operations" />
+      <path value="$PROJECT_DIR$/vendor/bower-asset/inputmask" />
+      <path value="$PROJECT_DIR$/vendor/symfony/console" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/version" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/diff" />
+      <path value="$PROJECT_DIR$/vendor/symfony/event-dispatcher" />
+      <path value="$PROJECT_DIR$/vendor/symfony/css-selector" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-mbstring" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-ctype" />
+      <path value="$PROJECT_DIR$/vendor/webmozart/assert" />
+      <path value="$PROJECT_DIR$/vendor/symfony/dom-crawler" />
+      <path value="$PROJECT_DIR$/vendor/symfony/browser-kit" />
+      <path value="$PROJECT_DIR$/vendor/symfony/yaml" />
+      <path value="$PROJECT_DIR$/vendor/symfony/finder" />
+      <path value="$PROJECT_DIR$/vendor/fzaninotto/faker" />
+      <path value="$PROJECT_DIR$/vendor/egulias/email-validator" />
+      <path value="$PROJECT_DIR$/vendor/composer" />
+      <path value="$PROJECT_DIR$/vendor/phar-io/manifest" />
+      <path value="$PROJECT_DIR$/vendor/phar-io/version" />
+      <path value="$PROJECT_DIR$/vendor/ezyang/htmlpurifier" />
+      <path value="$PROJECT_DIR$/vendor/psr/http-message" />
+      <path value="$PROJECT_DIR$/vendor/theseer/tokenizer" />
+      <path value="$PROJECT_DIR$/vendor/himiklab/yii2-easy-thumbnail-image-helper" />
+      <path value="$PROJECT_DIR$/vendor/himiklab/yii2-sortable-grid-view-widget" />
+      <path value="$PROJECT_DIR$/vendor/imagine/imagine" />
+      <path value="$PROJECT_DIR$/vendor/yiisoft/yii2-jui" />
+      <path value="$PROJECT_DIR$/vendor/yiisoft/yii2-imagine" />
+      <path value="$PROJECT_DIR$/vendor/yiisoft/yii2-httpclient" />
+      <path value="$PROJECT_DIR$/vendor/bower-asset/jquery-ui" />
+      <path value="$PROJECT_DIR$/vendor/yiisoft/yii2-authclient" />
+      <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-widget-depdrop" />
+      <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-widget-switchinput" />
+      <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-widget-sidenav" />
+      <path value="$PROJECT_DIR$/vendor/kartik-v/bootstrap-fileinput" />
+      <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-widget-spinner" />
+      <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-widget-select2" />
+      <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-widget-affix" />
+      <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-widget-colorinput" />
+      <path value="$PROJECT_DIR$/vendor/kartik-v/dependent-dropdown" />
+      <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-widget-growl" />
+      <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-widget-fileinput" />
+      <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-widgets" />
+      <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-widget-touchspin" />
+      <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-widget-alert" />
+      <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-widget-activeform" />
+      <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-helpers" />
+      <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-widget-typeahead" />
+      <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-field-range" />
+      <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-widget-timepicker" />
+      <path value="$PROJECT_DIR$/vendor/kartik-v/bootstrap-star-rating" />
+      <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-widget-datetimepicker" />
+      <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-widget-rating" />
+      <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-widget-rangeinput" />
+      <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-widget-datepicker" />
+      <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-krajee-base" />
+      <path value="$PROJECT_DIR$/vendor/kotchuprik/yii2-odnoklassniki-authclient" />
+      <path value="$PROJECT_DIR$/vendor/2amigos/yii2-ckeditor-widget" />
+      <path value="$PROJECT_DIR$/vendor/dastanaron/yii2-translit" />
+      <path value="$PROJECT_DIR$/vendor/yiisoft/yii2-elasticsearch" />
+      <path value="$PROJECT_DIR$/vendor/select2/select2" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/environment" />
+      <path value="$PROJECT_DIR$/vendor/psr/container" />
+      <path value="$PROJECT_DIR$/vendor/symfony/event-dispatcher-contracts" />
+      <path value="$PROJECT_DIR$/vendor/symfony/service-contracts" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php73" />
+      <path value="$PROJECT_DIR$/vendor/ralouphie/getallheaders" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php72" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-idn" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-iconv" />
+    </include_path>
+  </component>
+  <component name="ProjectId" id="1RVWtGObmayVc9zrOepw2KCvGeA" />
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State />
+          <State>
+            <id>PHP</id>
+          </State>
+          <State>
+            <id>PHPDocPHP</id>
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>PhpDocRedundantThrowsInspection</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$USER_HOME$/OneDrive/Desktop/Projects/places-markup" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="editing.templates" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\places\frontend\models\forms" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="npm.build">
+    <configuration default="true" type="js.build_tools.npm">
+      <package-json value="$PROJECT_DIR$/frontend/public_html/places-markup/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="build" type="js.build_tools.npm" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/frontend/public_html/places-markup/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="build" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="start-only" type="js.build_tools.npm" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/frontend/public_html/places-markup/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start-only" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="start" type="js.build_tools.npm" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/frontend/public_html/places-markup/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="npm.start" />
+      <item itemvalue="npm.build" />
+      <item itemvalue="npm.start-only" />
+    </list>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="49a126a6-94c7-4406-8a38-0d2526efd727" name="Default Changelist" comment="" />
+      <created>1537177102324</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1537177102324</updated>
+      <workItem from="1537177104338" duration="704000" />
+      <workItem from="1537215405021" duration="818000" />
+      <workItem from="1537216237941" duration="2799000" />
+      <workItem from="1537224582680" duration="1372000" />
+      <workItem from="1537279557846" duration="615000" />
+      <workItem from="1537350600220" duration="196000" />
+      <workItem from="1538058817766" duration="445000" />
+      <workItem from="1538404121329" duration="49000" />
+      <workItem from="1553120854757" duration="193000" />
+      <workItem from="1553181963327" duration="754000" />
+      <workItem from="1553193311663" duration="15000" />
+      <workItem from="1553200507860" duration="1384000" />
+      <workItem from="1553246723465" duration="2000" />
+      <workItem from="1556449179724" duration="212000" />
+      <workItem from="1557609912645" duration="3263000" />
+      <workItem from="1557677757329" duration="864000" />
+      <workItem from="1557693935685" duration="2759000" />
+      <workItem from="1557696785312" duration="1384000" />
+      <workItem from="1557698184859" duration="721000" />
+      <workItem from="1557700035667" duration="5000" />
+      <workItem from="1557738795082" duration="33000" />
+      <workItem from="1569752958115" duration="2682000" />
+      <workItem from="1569795910343" duration="3000" />
+      <workItem from="1571004223491" duration="2388000" />
+      <workItem from="1571060279202" duration="29000" />
+      <workItem from="1571072908006" duration="11428000" />
+      <workItem from="1571133043193" duration="6000" />
+      <workItem from="1571151382256" duration="3768000" />
+      <workItem from="1571180802760" duration="925000" />
+      <workItem from="1571217296943" duration="3000" />
+      <workItem from="1571223127763" duration="1204000" />
+      <workItem from="1571306415066" duration="39000" />
+      <workItem from="1571436840104" duration="2341000" />
+      <workItem from="1571439371612" duration="1087000" />
+      <workItem from="1571478857334" duration="7659000" />
+      <workItem from="1571510058932" duration="3269000" />
+      <workItem from="1571521833421" duration="3564000" />
+      <workItem from="1571566259212" duration="1374000" />
+      <workItem from="1571575910440" duration="4271000" />
+      <workItem from="1571597442114" duration="16000" />
+    </task>
+    <task id="LOCAL-00001" summary="Test">
+      <created>1537216444646</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1537216444646</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Add Places">
+      <created>1537224713211</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1537224713211</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Add Places">
+      <created>1537224760085</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1537224760085</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Improvements">
+      <created>1537225945201</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1537225945201</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Improvements">
+      <created>1538059086626</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1538059086626</updated>
+    </task>
+    <task id="LOCAL-00006" summary="v2.0 first commit">
+      <created>1557613156972</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1557613156973</updated>
+    </task>
+    <task id="LOCAL-00007" summary="improves and places list">
+      <created>1557698303555</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1557698303555</updated>
+    </task>
+    <task id="LOCAL-00008" summary="improves and places list">
+      <created>1571004337835</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1571004337835</updated>
+    </task>
+    <task id="LOCAL-00009" summary="start divide into blocks">
+      <created>1571094405655</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1571094405655</updated>
+    </task>
+    <task id="LOCAL-00010" summary="dividing and login form">
+      <created>1571181880946</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1571181880947</updated>
+    </task>
+    <task id="LOCAL-00011" summary="login form">
+      <created>1571182056380</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1571182056380</updated>
+    </task>
+    <task id="LOCAL-00012" summary="login form">
+      <created>1571439099797</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1571439099797</updated>
+    </task>
+    <task id="LOCAL-00013" summary="filters &amp; top places &amp; new places">
+      <created>1571481116879</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1571481116879</updated>
+    </task>
+    <task id="LOCAL-00014" summary="place likes/dislikes">
+      <created>1571489430564</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1571489430564</updated>
+    </task>
+    <task id="LOCAL-00015" summary="place views">
+      <created>1571491561080</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1571491561080</updated>
+    </task>
+    <task id="LOCAL-00016" summary="improves">
+      <created>1571527390454</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1571527390454</updated>
+    </task>
+    <task id="LOCAL-00017" summary="improves">
+      <created>1571576031640</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1571576031640</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
+    <servers />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Test" />
+    <MESSAGE value="Add Places" />
+    <MESSAGE value="Improvements" />
+    <MESSAGE value="v2.0 first commit" />
+    <MESSAGE value="improves and places list" />
+    <MESSAGE value="start divide into blocks" />
+    <MESSAGE value="dividing and login form" />
+    <MESSAGE value="login form" />
+    <MESSAGE value="filters &amp; top places &amp; new places" />
+    <MESSAGE value="place likes/dislikes" />
+    <MESSAGE value="place views" />
+    <MESSAGE value="improves" />
+    <option name="LAST_COMMIT_MESSAGE" value="improves" />
+    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/common/models/User.php</url>
+          <line>8</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

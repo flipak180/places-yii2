@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="36c905b7-a959-43ac-b0b6-632bd9b40b42" name="dimawiths7" url="http://77.222.57.4">
+        <fileTransfer host="77.222.57.4" port="21" rootFolder="/places-yii2">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+          <option name="port" value="21" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
